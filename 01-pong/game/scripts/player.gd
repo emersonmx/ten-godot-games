@@ -8,6 +8,7 @@ func _ready():
 
 func _process(delta):
 	self._move_pad(delta)
+	print(self._calc_height(self._get_extents().y * 2))
 	self._clamp_position()
 
 func _move_pad(delta):
@@ -21,7 +22,13 @@ func _move_pad(delta):
 func _clamp_position():
 	var view_size = get_viewport_rect().size
 	var pos = get_pos()
-	var size = get_node('shape').get_shape().get_extents()
+	var size = self._get_extents()
 	pos.y = clamp(pos.y, size.y + WALL_HEIGHT,
 		view_size.y - size.y - WALL_HEIGHT)
 	set_pos(pos)
+
+func _calc_height(base, angle=30):
+	return (base / 2.0) * tan(deg2rad(angle))
+
+func _get_extents():
+	return get_node('shape').get_shape().get_extents()

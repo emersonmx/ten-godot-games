@@ -30,8 +30,6 @@ region_rect = Rect2( 0, 0, 4, 480 )
 
 [node name="walls" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="top" type="StaticBody2D" parent="walls"]
 
 transform/pos = Vector2( 320, 8 )
@@ -45,6 +43,9 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="shape" type="CollisionShape2D" parent="walls/top"]
 
@@ -98,6 +99,9 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="shape" type="CollisionShape2D" parent="pads/player"]
 
@@ -135,6 +139,9 @@ velocity/linear = Vector2( -100, 0 )
 velocity/angular = 0.0
 damp_override/linear = 0.0
 damp_override/angular = 0.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="shape" type="CollisionShape2D" parent="ball"]
 
