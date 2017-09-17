@@ -36,12 +36,12 @@ func _clamp_position():
 
 func get_anchor():
 	var extents = self._get_extents()
-	var point = Vector2(self._calc_height(extents.y * 2), get_pos().y)
+	var offset = _calc_height(extents.y * 2)
+	var point = get_pos()
 	if player == Player.LEFT:
-		point.x += extents.x
-		point.x = -point.x
+		point.x = (point.x + extents.x) - offset
 	else:
-		point.x += extents.x + get_viewport_rect().size.x
+		point.x = (point.x - extents.x) + offset
 	return point
 
 func _calc_height(base, angle=30):

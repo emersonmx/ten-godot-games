@@ -7,7 +7,8 @@ var direction = Vector2()
 
 func _ready():
 	self.connect('area_enter', self, '_on_area_enter')
-	set_process(true)
+	get_node('timer').connect('timeout', self, '_on_timeout')
+	get_node('timer').start()
 
 func _process(delta):
 	var pos = get_pos()
@@ -20,6 +21,9 @@ func _on_area_enter(body):
 		speedup()
 	if body.is_in_group('wall'):
 		direction.y = -direction.y
+
+func _on_timeout():
+	set_process(true)
 
 func randomize_direction():
 	randomize()
