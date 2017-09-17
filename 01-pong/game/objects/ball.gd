@@ -30,4 +30,3 @@ func randomize_direction():
 func speedup():
 	_speed += _speedup_step
 	_speed = clamp(_speed, _speed, _max_speed)
-	print(_speed)

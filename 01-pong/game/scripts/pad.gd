@@ -42,7 +42,6 @@ func get_anchor():
 		point.x = -point.x
 	else:
 		point.x += extents.x + get_viewport_rect().size.x
-	print(point)
 	return point
 
 func _calc_height(base, angle=30):
