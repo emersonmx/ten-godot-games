@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/pad.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/white.tex" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 50 )
+
+[node name="pad" type="Area2D" groups=[
+"pad",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+player = 0
+move_up_action = null
+move_down_action = null
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1.90735e-06, 1.71661e-05 )
+transform/scale = Vector2( 2.5, 12.5 )
+texture = ExtResource( 2 )
+
+
