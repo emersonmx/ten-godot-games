@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scenes/game.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/white-repeat.tex" type="Texture" id=2]
 [ext_resource path="res://objects/pad.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/default.fnt" type="BitmapFont" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -64,5 +65,44 @@ transform/pos = Vector2( 320, 240 )
 shape = SubResource( 1 )
 trigger = true
 _update_shape_index = 0
+
+[node name="scores" type="Node2D" parent="."]
+
+[node name="score1" type="Label" parent="scores"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -4.0
+margin/top = 32.0
+margin/right = -242.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="score2" type="Label" parent="scores"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -274.0
+margin/top = 32.0
+margin/right = -512.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
