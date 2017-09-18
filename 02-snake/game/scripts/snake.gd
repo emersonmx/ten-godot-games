@@ -27,13 +27,12 @@ func _fixed_process(delta):
 func _move(delta):
 	if Input.is_action_pressed('up'):
 		direction = UP
-	elif Input.is_action_pressed('down'):
-		direction = DOWN
-
-	if Input.is_action_pressed('left'):
-		direction = LEFT
 	elif Input.is_action_pressed('right'):
 		direction = RIGHT
+	elif Input.is_action_pressed('down'):
+		direction = DOWN
+	elif Input.is_action_pressed('left'):
+		direction = LEFT
 
 	if not is_moving and direction != Vector2():
 		target_direction = direction.normalized()
