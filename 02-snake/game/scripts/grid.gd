@@ -10,7 +10,7 @@ var half_tile_size = tile_size / 2
 var grid_size = Vector2(20, 20)
 var grid = []
 
-onready var snake_class = preload('res://objects/snake.tscn')
+onready var snake_scene = preload('res://objects/snake.tscn')
 
 func _ready():
 	_create_grid()
@@ -23,7 +23,7 @@ func _create_grid():
 			grid[i].append(null)
 
 func _create_snake():
-	var snake = snake_class.instance()
+	var snake = snake_scene.instance()
 	snake.direction = snake.RIGHT
 	snake.set_pos(map_to_world(grid_size / 2) + half_tile_size)
 	add_child(snake)
