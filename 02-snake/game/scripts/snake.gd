@@ -51,6 +51,3 @@ func _move(delta):
 			is_moving = false
 
 		set_pos(pos + velocity)
-
-
-
