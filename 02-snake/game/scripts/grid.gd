@@ -37,6 +37,10 @@ func is_cell_vacant(pos, direction):
 
 	return grid[grid_pos.x][grid_pos.y] == null
 
+func get_cell_object(pos, direction):
+	var grid_pos = world_to_map(pos) + direction
+	return grid[grid_pos.x][grid_pos.y]
+
 func update_child_pos(child_node):
 	var grid_pos = world_to_map(child_node.get_pos())
 	grid[grid_pos.x][grid_pos.y] = null
