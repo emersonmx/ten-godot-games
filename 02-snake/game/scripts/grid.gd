@@ -13,11 +13,16 @@ var grid = []
 onready var snake_class = preload('res://objects/snake.tscn')
 
 func _ready():
+	_create_grid()
+	_create_snake()
+
+func _create_grid():
 	for i in range(grid_size.x):
 		grid.append([])
 		for j in range(grid_size.y):
 			grid[i].append(null)
 
+func _create_snake():
 	var snake = snake_class.instance()
 	snake.direction = snake.RIGHT
 	snake.set_pos(map_to_world(grid_size / 2) + half_tile_size)
