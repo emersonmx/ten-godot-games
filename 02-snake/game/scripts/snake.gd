@@ -1,5 +1,10 @@
 extends Area2D
 
+const UP = Vector2(0, -1)
+const RIGHT = Vector2(1, 0)
+const DOWN = Vector2(0, 1)
+const LEFT = Vector2(-1, 0)
+
 var direction = Vector2()
 var speed = 50
 var max_speed = 200
@@ -21,23 +26,21 @@ func _fixed_process(delta):
 
 func _move(delta):
 	if Input.is_action_pressed('up'):
-		direction = Vector2(0, -1)
+		direction = UP
 	elif Input.is_action_pressed('down'):
-		direction = Vector2(0, 1)
+		direction = DOWN
 
 	if Input.is_action_pressed('left'):
-		direction = Vector2(-1, 0)
+		direction = LEFT
 	elif Input.is_action_pressed('right'):
-		direction = Vector2(1, 0)
+		direction = RIGHT
 
 	if not is_moving and direction != Vector2():
-		print('not moving')
 		target_direction = direction.normalized()
 		if grid.is_cell_vacant(get_pos(), direction):
 			target_pos = grid.update_child_pos(self)
 			is_moving = true
 	elif is_moving:
-		print('moving')
 		var pos = get_pos()
 		var velocity = target_direction * speed * delta
 

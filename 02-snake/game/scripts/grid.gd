@@ -19,6 +19,7 @@ func _ready():
 			grid[i].append(null)
 
 	var snake = snake_class.instance()
+	snake.direction = snake.RIGHT
 	snake.set_pos(map_to_world(grid_size / 2) + half_tile_size)
 	add_child(snake)
 
@@ -33,7 +34,6 @@ func is_cell_vacant(pos, direction):
 
 func update_child_pos(child_node):
 	var grid_pos = world_to_map(child_node.get_pos())
-	print(grid_pos)
 	grid[grid_pos.x][grid_pos.y] = null
 
 	var new_grid_pos = grid_pos + child_node.direction
