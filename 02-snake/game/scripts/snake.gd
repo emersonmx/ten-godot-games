@@ -85,7 +85,10 @@ func _update_body():
 		part = parts[i]
 		last_position = part.get_pos()
 		part.set_pos(move_position)
+		grid.set_cell_content(grid.world_to_map(move_position), grid.PLAYER)
 		move_position = last_position
+
+	grid.set_cell_content(grid.world_to_map(last_position), null)
 
 func _get_head():
 	return parts[0]

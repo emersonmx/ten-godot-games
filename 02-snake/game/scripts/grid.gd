@@ -16,6 +16,13 @@ func _ready():
 	_create_grid()
 	_create_snake()
 
+func _draw_ascii_grid():
+	print('---')
+	for x in range(grid_size.x):
+		for y in range(grid_size.y):
+			printraw('#' if grid[y][x] == PLAYER else '.')
+		print('')
+
 func _create_grid():
 	for x in range(grid_size.x):
 		grid.append([])
