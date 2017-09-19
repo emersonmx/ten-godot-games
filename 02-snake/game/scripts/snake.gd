@@ -35,6 +35,7 @@ func _create_parts():
 		part.set_pos(origin + Vector2((i - SIZE) * grid.tile_size.x, 0))
 		part.index = (SIZE - 1) - i
 		add_child(part)
+		grid.set_cell_content(grid.world_to_map(part.get_pos()), grid.PLAYER)
 		parts.push_front(part)
 
 func _move(delta):
