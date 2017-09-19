@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/images/food.tex" type="Texture" id=1]
 
-[node name="Sprite" type="Sprite"]
+[node name="food" type="Sprite"]
 
 texture = ExtResource( 1 )
 
