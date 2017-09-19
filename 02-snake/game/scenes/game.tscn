@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://scripts/grid.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scripts/grid_visualizer.gd" type="Script" id=2]
 
 [node name="game" type="Node2D"]

@@ -10,13 +10,15 @@ var half_tile_size = tile_size / 2
 var grid_size = Vector2(20, 20)
 var grid = []
 
+var _food
+
 onready var snake_object = preload('res://objects/snake.tscn')
 onready var food_object = preload('res://objects/food.tscn')
 
 func _ready():
 	_create_grid()
 	_create_snake()
-	_create_food()
+	_food = _create_food()
 
 func _draw_ascii_grid():
 	print('---')
@@ -34,6 +36,8 @@ func _create_grid():
 func _create_snake():
 	var snake = snake_object.instance()
 	add_child(snake)
+	snake.connect('dead', self, '_on_snake_dead')
+	snake.connect('collect', self, '_on_snake_collect')
 
 func _create_food():
 	randomize()
@@ -42,6 +46,8 @@ func _create_food():
 	var food = food_object.instance()
 	food.set_pos(map_to_world(random_cell) + half_tile_size)
 	add_child(food)
+	set_cell_content(random_cell, COLLECTIBLE)
+	return food
 
 func get_cell_content(pos):
 	return grid[pos.x][pos.y]
@@ -51,8 +57,16 @@ func set_cell_content(pos, type):
 
 func get_empty_cells():
 	var result = []
-	for x in range(grid_size.x):
-		for y in range(grid_size.y):
+	for y in range(grid_size.y):
+		for x in range(grid_size.x):
 			if grid[y][x] == null:
 				result.append(Vector2(x, y))
 	return result
+
+func _on_snake_collect():
+	set_cell_content(world_to_map(_food.get_pos()), null)
+	_food.queue_free()
+	_food = _create_food()
+
+func _on_snake_dead():
+	print('dead')
