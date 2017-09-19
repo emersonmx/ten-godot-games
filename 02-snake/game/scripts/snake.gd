@@ -8,7 +8,7 @@ const DOWN = Vector2(0, 1)
 const LEFT = Vector2(-1, 0)
 
 signal dead
-signal collect
+signal eat
 
 var direction = RIGHT
 var type
@@ -62,8 +62,8 @@ func _move(delta):
 		emit_signal('dead')
 		return
 
-	if _can_collect():
-		emit_signal('collect')
+	if _can_eat():
+		emit_signal('eat')
 
 	if !_can_move():
 		emit_signal('dead')
@@ -83,9 +83,9 @@ func _can_move():
 	var pos = grid.world_to_map(_get_head().get_pos()) + direction
 	return grid.get_cell_content(pos) == null
 
-func _can_collect():
+func _can_eat():
 	var pos = grid.world_to_map(_get_head().get_pos()) + direction
-	return grid.get_cell_content(pos) == grid.COLLECTIBLE
+	return grid.get_cell_content(pos) == grid.FOOD
 
 func _get_move_position():
 	var grid_pos = grid.world_to_map(_get_head().get_pos())
@@ -109,3 +109,6 @@ func _update_body():
 
 func _get_head():
 	return parts[0]
+
+func grow():
+	pass

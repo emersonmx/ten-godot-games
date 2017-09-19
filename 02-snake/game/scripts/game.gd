@@ -1,7 +1,7 @@
 extends TileMap
 
 enum ObjectType {
-	PLAYER, COLLECTIBLE
+	PLAYER, FOOD
 }
 
 var tile_size = get_cell_size()
@@ -39,7 +39,7 @@ func _create_snake():
 	var snake = snake_object.instance()
 	add_child(snake)
 	snake.connect('dead', self, '_on_snake_dead')
-	snake.connect('collect', self, '_on_snake_collect')
+	snake.connect('eat', self, '_on_snake_eat')
 	return snake
 
 func _create_food():
@@ -49,7 +49,7 @@ func _create_food():
 	var food = food_object.instance()
 	food.set_pos(map_to_world(random_cell) + half_tile_size)
 	add_child(food)
-	set_cell_content(random_cell, COLLECTIBLE)
+	set_cell_content(random_cell, FOOD)
 	return food
 
 func get_cell_content(pos):
@@ -66,7 +66,7 @@ func get_empty_cells():
 				result.append(Vector2(x, y))
 	return result
 
-func _on_snake_collect():
+func _on_snake_eat():
 	set_cell_content(world_to_map(_food.get_pos()), null)
 	_food.queue_free()
 	_food = _create_food()
