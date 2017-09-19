@@ -1,4 +1,4 @@
-extends Sprite
+extends Node
 
 const SIZE = 4
 
