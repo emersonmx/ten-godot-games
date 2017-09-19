@@ -22,11 +22,18 @@ func _ready():
 	_food = _create_food()
 
 func _draw_ascii_grid():
-	print('---')
+	var t = ''
+	t+='---\n'
 	for x in range(grid_size.x):
 		for y in range(grid_size.y):
-			printraw('#' if grid[y][x] == PLAYER else '.')
-		print('')
+			if grid[y][x] == PLAYER:
+				t+='#'
+			elif grid[y][x] == FOOD:
+				t+='@'
+			else:
+				t+='.'
+		t+='\n'
+	print(t)
 
 func _clear_grid():
 	grid = []
