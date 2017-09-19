@@ -24,8 +24,6 @@ func _create_grid():
 
 func _create_snake():
 	var snake = snake_scene.instance()
-	snake.direction = snake.RIGHT
-	snake.set_pos(map_to_world(grid_size / 2) + half_tile_size)
 	add_child(snake)
 
 func get_cell_content(pos):

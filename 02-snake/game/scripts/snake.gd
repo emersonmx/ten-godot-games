@@ -1,11 +1,11 @@
-extends Area2D
+extends Sprite
 
 const UP = Vector2(0, -1)
 const RIGHT = Vector2(1, 0)
 const DOWN = Vector2(0, 1)
 const LEFT = Vector2(-1, 0)
 
-var direction = Vector2()
+var direction = RIGHT
 var type
 var target_pos = Vector2()
 
@@ -27,7 +27,8 @@ func _fixed_process(delta):
 	_move(delta)
 
 func _create_parts():
-	pass
+	var part = _part_scene.instance()
+	add_child(part)
 
 func _move(delta):
 	if Input.is_action_pressed('up'):
