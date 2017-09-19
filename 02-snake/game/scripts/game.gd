@@ -51,13 +51,23 @@ func _create_snake():
 
 func _create_food():
 	randomize()
-	var cells = get_empty_cells()
-	var random_cell = cells[randi() % cells.size()]
-	var food = food_object.instance()
-	food.set_pos(map_to_world(random_cell) + half_tile_size)
-	add_child(food)
-	set_cell_content(random_cell, FOOD)
-	return food
+	var cells
+	var random_cell
+	var food
+	while true:
+		cells = get_empty_cells()
+		if cells.empty():
+			return null
+		random_cell = cells[randi() % cells.size()]
+		if get_cell_content(random_cell) != null:
+			continue
+
+		food = food_object.instance()
+		food.set_pos(map_to_world(random_cell) + half_tile_size)
+		add_child(food)
+		set_cell_content(random_cell, FOOD)
+
+		return food
 
 func get_cell_content(pos):
 	return grid[pos.x][pos.y]
@@ -77,6 +87,8 @@ func _on_snake_eat():
 	set_cell_content(world_to_map(_food.get_pos()), null)
 	_food.queue_free()
 	_food = _create_food()
+	if _food == null:
+		print('Game Over')
 
 func _on_snake_dead():
-	print('dead')
+	print('Dead')

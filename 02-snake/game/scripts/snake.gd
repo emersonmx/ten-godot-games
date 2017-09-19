@@ -25,21 +25,9 @@ onready var grid = get_parent()
 func _ready():
 	type = grid.PLAYER
 	_create_parts()
-	set_fixed_process(true)
+
 	set_process_input(true)
-
-func _input(event):
-	if Input.is_action_pressed('up'):
-		direction = UP
-	elif Input.is_action_pressed('right'):
-		direction = RIGHT
-	elif Input.is_action_pressed('down'):
-		direction = DOWN
-	elif Input.is_action_pressed('left'):
-		direction = LEFT
-
-func _fixed_process(delta):
-	_move(delta)
+	set_fixed_process(true)
 
 func _create_parts():
 	var origin = grid.map_to_world(grid.grid_size / 2) + grid.half_tile_size
@@ -52,23 +40,40 @@ func _create_parts():
 		grid.set_cell_content(grid.world_to_map(part.get_pos()), grid.PLAYER)
 		parts.push_front(part)
 
-func _move(delta):
+func _input(event):
+	if event.is_action_pressed('up'):
+		direction = UP
+	elif event.is_action_pressed('right'):
+		direction = RIGHT
+	elif event.is_action_pressed('down'):
+		direction = DOWN
+	elif event.is_action_pressed('left'):
+		direction = LEFT
+
+	if event.is_action_pressed('ui_select'):
+		emit_signal('eat')
+		_grow()
+
+func _fixed_process(delta):
 	_delay_count += delta
 	if _delay_count < _delay:
 		return
 	_delay_count = 0
 
+	_move(delta)
+
+func _move(delta):
 	if !_is_inside_of_grid():
+		emit_signal('dead')
+		return
+
+	if !_can_move():
 		emit_signal('dead')
 		return
 
 	if _can_eat():
 		_grow()
 		emit_signal('eat')
-
-	if !_can_move():
-		emit_signal('dead')
-		return
 
 	_update_body()
 
@@ -82,7 +87,7 @@ func _is_inside_of_grid():
 
 func _can_move():
 	var pos = grid.world_to_map(_get_head().get_pos()) + direction
-	return grid.get_cell_content(pos) == null
+	return grid.get_cell_content(pos) != grid.PLAYER
 
 func _can_eat():
 	var pos = grid.world_to_map(_get_head().get_pos()) + direction
