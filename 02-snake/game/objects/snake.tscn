@@ -12,7 +12,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="part1" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
 vframes = 2

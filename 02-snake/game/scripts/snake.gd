@@ -5,15 +5,12 @@ const RIGHT = Vector2(1, 0)
 const DOWN = Vector2(0, 1)
 const LEFT = Vector2(-1, 0)
 
-var direction = Vector2()
-var speed = 50
-var max_speed = 200
-
 var type
-
-var is_moving = false
+var direction = Vector2()
 var target_pos = Vector2()
-var target_direction = Vector2()
+
+var _delay = 0.3
+var _delay_count = 0
 
 onready var grid = get_parent()
 
@@ -34,19 +31,9 @@ func _move(delta):
 	elif Input.is_action_pressed('left'):
 		direction = LEFT
 
-	if not is_moving and direction != Vector2():
-		target_direction = direction.normalized()
-		if grid.is_cell_vacant(get_pos(), direction):
+	_delay_count += delta
+	if _delay_count >= _delay:
+		if grid.is_cell_vacant(get_pos(), direction.normalized()):
 			target_pos = grid.update_child_pos(self)
-			is_moving = true
-	elif is_moving:
-		var pos = get_pos()
-		var velocity = target_direction * speed * delta
-
-		var distance_to_target = pos.distance_to(target_pos)
-		var move_distance = velocity.length()
-		if move_distance > distance_to_target:
-			velocity = target_direction * distance_to_target
-			is_moving = false
-
-		set_pos(pos + velocity)
+			set_pos(target_pos)
+			_delay_count = 0
