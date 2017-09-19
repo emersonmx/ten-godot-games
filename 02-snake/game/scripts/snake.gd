@@ -33,6 +33,7 @@ func _create_parts():
 	for i in range(SIZE):
 		part = _part_scene.instance()
 		part.set_pos(origin + Vector2((i - SIZE) * grid.tile_size.x, 0))
+		part.index = (SIZE - 1) - i
 		add_child(part)
 		parts.push_front(part)
 
