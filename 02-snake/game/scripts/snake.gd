@@ -63,6 +63,7 @@ func _move(delta):
 		return
 
 	if _can_eat():
+		_grow()
 		emit_signal('eat')
 
 	if !_can_move():
@@ -110,5 +111,5 @@ func _update_body():
 func _get_head():
 	return parts[0]
 
-func grow():
+func _grow():
 	pass
