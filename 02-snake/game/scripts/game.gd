@@ -10,14 +10,15 @@ var half_tile_size = tile_size / 2
 var grid_size = Vector2(20, 20)
 var grid = []
 
+var _snake
 var _food
 
 onready var snake_object = preload('res://objects/snake.tscn')
 onready var food_object = preload('res://objects/food.tscn')
 
 func _ready():
-	_create_grid()
-	_create_snake()
+	_clear_grid()
+	_snake = _create_snake()
 	_food = _create_food()
 
 func _draw_ascii_grid():
@@ -27,7 +28,8 @@ func _draw_ascii_grid():
 			printraw('#' if grid[y][x] == PLAYER else '.')
 		print('')
 
-func _create_grid():
+func _clear_grid():
+	grid = []
 	for x in range(grid_size.x):
 		grid.append([])
 		for y in range(grid_size.y):
@@ -38,6 +40,7 @@ func _create_snake():
 	add_child(snake)
 	snake.connect('dead', self, '_on_snake_dead')
 	snake.connect('collect', self, '_on_snake_collect')
+	return snake
 
 func _create_food():
 	randomize()
