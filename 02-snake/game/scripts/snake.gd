@@ -111,5 +111,14 @@ func _update_body():
 func _get_head():
 	return parts[0]
 
+func _get_tail():
+	return parts[-1]
+
 func _grow():
-	pass
+	var tail = _get_tail()
+	var part = _part_scene.instance()
+	part.set_pos(tail.get_pos())
+	part.index = tail.index + 1
+	add_child(part)
+	grid.set_cell_content(grid.world_to_map(part.get_pos()), grid.PLAYER)
+	parts.push_back(part)
