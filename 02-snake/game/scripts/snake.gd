@@ -7,6 +7,9 @@ const RIGHT = Vector2(1, 0)
 const DOWN = Vector2(0, 1)
 const LEFT = Vector2(-1, 0)
 
+signal dead
+signal collect
+
 var direction = RIGHT
 var type
 var target_pos = Vector2()
@@ -23,6 +26,17 @@ func _ready():
 	type = grid.PLAYER
 	_create_parts()
 	set_fixed_process(true)
+	set_process_input(true)
+
+func _input(event):
+	if Input.is_action_pressed('up'):
+		direction = UP
+	elif Input.is_action_pressed('right'):
+		direction = RIGHT
+	elif Input.is_action_pressed('down'):
+		direction = DOWN
+	elif Input.is_action_pressed('left'):
+		direction = LEFT
 
 func _fixed_process(delta):
 	_move(delta)
@@ -39,23 +53,20 @@ func _create_parts():
 		parts.push_front(part)
 
 func _move(delta):
-	if Input.is_action_pressed('up'):
-		direction = UP
-	elif Input.is_action_pressed('right'):
-		direction = RIGHT
-	elif Input.is_action_pressed('down'):
-		direction = DOWN
-	elif Input.is_action_pressed('left'):
-		direction = LEFT
-
 	_delay_count += delta
 	if _delay_count < _delay:
 		return
 	_delay_count = 0
 
 	if !_is_inside_of_grid():
+		emit_signal('dead')
 		return
+
+	if _can_collect():
+		emit_signal('collect')
+
 	if !_can_move():
+		emit_signal('dead')
 		return
 
 	_update_body()
@@ -71,6 +82,10 @@ func _is_inside_of_grid():
 func _can_move():
 	var pos = grid.world_to_map(_get_head().get_pos()) + direction
 	return grid.get_cell_content(pos) == null
+
+func _can_collect():
+	var pos = grid.world_to_map(_get_head().get_pos()) + direction
+	return grid.get_cell_content(pos) == grid.COLLECTIBLE
 
 func _get_move_position():
 	var grid_pos = grid.world_to_map(_get_head().get_pos())
