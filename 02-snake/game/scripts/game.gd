@@ -30,10 +30,10 @@ func _draw_ascii_grid():
 
 func _clear_grid():
 	grid = []
-	for x in range(grid_size.x):
+	for y in range(grid_size.y):
 		grid.append([])
-		for y in range(grid_size.y):
-			grid[x].append(null)
+		for x in range(grid_size.x):
+			grid[y].append(null)
 
 func _create_snake():
 	var snake = snake_object.instance()
