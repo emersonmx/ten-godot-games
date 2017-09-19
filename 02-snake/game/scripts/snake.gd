@@ -15,7 +15,7 @@ var type
 var target_pos = Vector2()
 var parts = []
 
-var _delay = 0.2
+var _delay = 0.1
 var _delay_count = 0
 
 var _part_scene = preload('res://objects/snake_part.tscn')
