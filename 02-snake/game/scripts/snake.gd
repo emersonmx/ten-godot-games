@@ -11,6 +11,7 @@ signal dead
 signal eat
 
 var direction = RIGHT
+var _input_direction = direction
 var type
 var target_pos = Vector2()
 var parts = []
@@ -42,21 +43,13 @@ func _create_parts():
 
 func _input(event):
 	if event.is_action_pressed('up'):
-		if direction == DOWN:
-			return
-		direction = UP
+		_input_direction = UP
 	elif event.is_action_pressed('right'):
-		if direction == LEFT:
-			return
-		direction = RIGHT
+		_input_direction = RIGHT
 	elif event.is_action_pressed('down'):
-		if direction == UP:
-			return
-		direction = DOWN
+		_input_direction = DOWN
 	elif event.is_action_pressed('left'):
-		if direction == RIGHT:
-			return
-		direction = LEFT
+		_input_direction = LEFT
 
 func _process(delta):
 	_delay_count += delta
@@ -64,7 +57,21 @@ func _process(delta):
 		return
 	_delay_count = 0
 
+	if _can_update_direction():
+		direction = _input_direction
+
 	_move(delta)
+
+func _can_update_direction():
+	if direction == UP and _input_direction == DOWN:
+		return false
+	if direction == DOWN and _input_direction == UP:
+		return false
+	if direction == LEFT and _input_direction == RIGHT:
+		return false
+	if direction == RIGHT and _input_direction == LEFT:
+		return false
+	return true
 
 func _move(delta):
 	if !_is_inside_of_grid():
