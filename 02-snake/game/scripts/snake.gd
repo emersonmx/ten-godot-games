@@ -42,12 +42,20 @@ func _create_parts():
 
 func _input(event):
 	if event.is_action_pressed('up'):
+		if direction == DOWN:
+			return
 		direction = UP
 	elif event.is_action_pressed('right'):
+		if direction == LEFT:
+			return
 		direction = RIGHT
 	elif event.is_action_pressed('down'):
+		if direction == UP:
+			return
 		direction = DOWN
 	elif event.is_action_pressed('left'):
+		if direction == RIGHT:
+			return
 		direction = LEFT
 
 func _process(delta):
