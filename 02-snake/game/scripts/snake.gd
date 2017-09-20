@@ -27,7 +27,7 @@ func _ready():
 	_create_parts()
 
 	set_process_input(true)
-	set_fixed_process(true)
+	set_process(true)
 
 func _create_parts():
 	var origin = grid.map_to_world(grid.grid_size / 2) + grid.half_tile_size
@@ -50,7 +50,7 @@ func _input(event):
 	elif event.is_action_pressed('left'):
 		direction = LEFT
 
-func _fixed_process(delta):
+func _process(delta):
 	_delay_count += delta
 	if _delay_count < _delay:
 		return
@@ -67,11 +67,15 @@ func _move(delta):
 		emit_signal('dead')
 		return
 
+	var emit_eat_signal = false
 	if _can_eat():
 		_grow()
-		emit_signal('eat')
+		emit_eat_signal = true
 
 	_update_body()
+
+	if emit_eat_signal:
+		emit_signal('eat')
 
 func _is_inside_of_grid():
 	var grid_pos = grid.world_to_map(_get_head().get_pos()) + direction

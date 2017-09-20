@@ -4,9 +4,6 @@ enum Direction {
 	UP, RIGHT, DOWN, LEFT, MID, UP_RIGHT, RIGHT_DOWN, DOWN_LEFT, LEFT_UP, BLANK
 }
 
-enum SpriteFrame {
-}
-
 var index
 var snake
 
@@ -15,6 +12,9 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
+	update_frame()
+
+func update_frame():
 	var sprite = MID
 	if _is_head():
 		sprite = _get_head_direction()
