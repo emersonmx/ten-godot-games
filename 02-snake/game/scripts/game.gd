@@ -13,10 +13,18 @@ var grid = []
 var _snake
 var _food
 
+onready var game_over_node = get_node('/root/game/game_over')
+onready var timer_node = get_node('/root/game/timer')
 onready var snake_object = preload('res://objects/snake.tscn')
 onready var food_object = preload('res://objects/food.tscn')
 
 func _ready():
+	_start_game()
+	timer_node.connect('timeout', self, '_on_timeout')
+
+func _start_game():
+	for o in get_tree().get_nodes_in_group('game'):
+		o.queue_free()
 	_clear_grid()
 	_snake = _create_snake()
 	_food = _create_food()
@@ -88,7 +96,17 @@ func _on_snake_eat():
 	_food.queue_free()
 	_food = _create_food()
 	if _food == null:
-		print('Game Over')
+		_show_game_over()
 
 func _on_snake_dead():
-	print('Dead')
+	_show_game_over()
+
+func _show_game_over():
+	game_over_node.show()
+	get_tree().set_pause(true)
+	timer_node.start()
+
+func _on_timeout():
+	game_over_node.hide()
+	get_tree().set_pause(false)
+	_start_game()

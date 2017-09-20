@@ -3,7 +3,9 @@
 [ext_resource path="res://assets/images/snake.tex" type="Texture" id=1]
 [ext_resource path="res://objects/snake_part.gd" type="Script" id=2]
 
-[node name="part" type="Sprite"]
+[node name="part" type="Sprite" groups=[
+"game",
+]]
 
 texture = ExtResource( 1 )
 vframes = 2
