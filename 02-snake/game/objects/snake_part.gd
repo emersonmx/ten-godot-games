@@ -16,30 +16,30 @@ func _process(delta):
 
 func update_frame():
 	var sprite = MID
-	if _is_head():
-		sprite = _get_head_direction()
-	elif _is_tail():
-		sprite = _get_tail_direction()
-	elif _is_mid():
+	if is_head():
+		sprite = get_head_direction()
+	elif is_tail():
+		sprite = get_tail_direction()
+	elif is_mid():
 		sprite = MID
-	elif _is_up_right():
+	elif is_up_right():
 		sprite = UP_RIGHT
-	elif _is_right_down():
+	elif is_right_down():
 		sprite = RIGHT_DOWN
-	elif _is_down_left():
+	elif is_down_left():
 		sprite = DOWN_LEFT
-	elif _is_left_up():
+	elif is_left_up():
 		sprite = LEFT_UP
 
 	set_frame(sprite)
 
-func _is_head():
+func is_head():
 	return index == 0
 
-func _is_tail():
+func is_tail():
 	return index == (snake.parts.size() - 1)
 
-func _get_head_direction():
+func get_head_direction():
 	var part = _get_right_part()
 	var p1 = get_pos()
 	var p2 = part.get_pos()
@@ -52,7 +52,7 @@ func _get_head_direction():
 	if p1.y > p2.y:
 		return DOWN
 
-func _get_tail_direction():
+func get_tail_direction():
 	var part = _get_left_part()
 	var p1 = get_pos()
 	var p2 = part.get_pos()
@@ -65,7 +65,7 @@ func _get_tail_direction():
 	if p1.y > p2.y:
 		return DOWN
 
-func _is_mid():
+func is_mid():
 	var left = _get_left_part()
 	var right = _get_right_part()
 	var diff = (left.get_pos() - right.get_pos()).abs()
@@ -75,7 +75,7 @@ func _is_mid():
 		return true
 	return false
 
-func _is_up_right():
+func is_up_right():
 	var l = _get_left_part().get_pos()
 	var r = _get_right_part().get_pos()
 	var p = get_pos()
@@ -85,7 +85,7 @@ func _is_up_right():
 		return true
 	return false
 
-func _is_right_down():
+func is_right_down():
 	var l = _get_left_part().get_pos()
 	var r = _get_right_part().get_pos()
 	var p = get_pos()
@@ -95,7 +95,7 @@ func _is_right_down():
 		return true
 	return false
 
-func _is_down_left():
+func is_down_left():
 	var l = _get_left_part().get_pos()
 	var r = _get_right_part().get_pos()
 	var p = get_pos()
@@ -105,7 +105,7 @@ func _is_down_left():
 		return true
 	return false
 
-func _is_left_up():
+func is_left_up():
 	var l = _get_left_part().get_pos()
 	var r = _get_right_part().get_pos()
 	var p = get_pos()

@@ -121,8 +121,7 @@ func _get_tail():
 
 func _grow():
 	var tail = _get_tail()
-	var part = _part_scene.instance()
-	part.set_pos(tail.get_pos())
+	var part = tail.duplicate()
 	part.index = tail.index + 1
 	add_child(part)
 	grid.set_cell_content(grid.world_to_map(part.get_pos()), grid.PLAYER)
