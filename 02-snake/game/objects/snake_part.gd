@@ -12,16 +12,24 @@ var snake
 
 func _ready():
 	snake = get_parent()
-	set_fixed_process(true)
+	set_process(true)
 
-func _fixed_process(delta):
-	var sprite = BLANK
+func _process(delta):
+	var sprite = MID
 	if _is_head():
 		sprite = _get_head_direction()
 	elif _is_tail():
 		sprite = _get_tail_direction()
 	elif _is_mid():
 		sprite = MID
+	elif _is_up_right():
+		sprite = UP_RIGHT
+	elif _is_right_down():
+		sprite = RIGHT_DOWN
+	elif _is_down_left():
+		sprite = DOWN_LEFT
+	elif _is_left_up():
+		sprite = LEFT_UP
 
 	set_frame(sprite)
 
@@ -64,6 +72,46 @@ func _is_mid():
 	if diff.x > 0 and diff.y == 0:
 		return true
 	if diff.x == 0 and diff.y > 0:
+		return true
+	return false
+
+func _is_up_right():
+	var l = _get_left_part().get_pos()
+	var r = _get_right_part().get_pos()
+	var p = get_pos()
+	if l.y < p.y and p.x < r.x:
+		return true
+	if r.y < p.y and p.x < l.x:
+		return true
+	return false
+
+func _is_right_down():
+	var l = _get_left_part().get_pos()
+	var r = _get_right_part().get_pos()
+	var p = get_pos()
+	if p.x < r.x and p.y < l.y:
+		return true
+	if p.x < l.x and p.y < r.y:
+		return true
+	return false
+
+func _is_down_left():
+	var l = _get_left_part().get_pos()
+	var r = _get_right_part().get_pos()
+	var p = get_pos()
+	if p.x > l.x and p.y < r.y:
+		return true
+	if p.x > r.x and p.y < l.y:
+		return true
+	return false
+
+func _is_left_up():
+	var l = _get_left_part().get_pos()
+	var r = _get_right_part().get_pos()
+	var p = get_pos()
+	if p.x > r.x and p.y > l.y:
+		return true
+	if p.x > l.x and p.y > r.y:
 		return true
 	return false
 

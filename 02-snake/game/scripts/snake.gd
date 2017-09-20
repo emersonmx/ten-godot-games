@@ -15,7 +15,7 @@ var type
 var target_pos = Vector2()
 var parts = []
 
-var _delay = 0.1
+var _delay = 0.2
 var _delay_count = 0
 
 var _part_scene = preload('res://objects/snake_part.tscn')
@@ -49,10 +49,6 @@ func _input(event):
 		direction = DOWN
 	elif event.is_action_pressed('left'):
 		direction = LEFT
-
-	if event.is_action_pressed('ui_select'):
-		emit_signal('eat')
-		_grow()
 
 func _fixed_process(delta):
 	_delay_count += delta
