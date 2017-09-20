@@ -24,9 +24,11 @@ collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray(  )
 script/script = ExtResource( 1 )
+show_ascii_grid = false
 
 [node name="grid_visualizer" type="Node2D" parent="grid"]
 
+visibility/visible = false
 script/script = ExtResource( 2 )
 line_color = Color( 255, 255, 255, 1 )
 line_width = 1

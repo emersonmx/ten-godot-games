@@ -4,6 +4,8 @@ enum ObjectType {
 	PLAYER, FOOD
 }
 
+export(bool) var show_ascii_grid = false
+
 var tile_size = get_cell_size()
 var half_tile_size = tile_size / 2
 
@@ -22,12 +24,17 @@ func _ready():
 	_start_game()
 	timer_node.connect('timeout', self, '_on_timeout')
 
+	set_process(show_ascii_grid)
+
 func _start_game():
 	for o in get_tree().get_nodes_in_group('game'):
 		o.queue_free()
 	_clear_grid()
 	_snake = _create_snake()
 	_food = _create_food()
+
+func _process(delta):
+	_draw_ascii_grid()
 
 func _draw_ascii_grid():
 	var t = ''
