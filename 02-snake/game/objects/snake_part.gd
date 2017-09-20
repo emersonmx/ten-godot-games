@@ -60,12 +60,10 @@ func _get_tail_direction():
 func _is_mid():
 	var left = _get_left_part()
 	var right = _get_right_part()
-	var left_pos = left.get_pos()
-	var right_pos = right.get_pos()
-	var pos = get_pos()
-	if left_pos.x < pos.x < pos.x < right_pos.x:
+	var diff = (left.get_pos() - right.get_pos()).abs()
+	if diff.x > 0 and diff.y == 0:
 		return true
-	if left_pos.x > pos.x > pos.x > right_pos.x:
+	if diff.x == 0 and diff.y > 0:
 		return true
 	return false
 
