@@ -2,8 +2,8 @@ extends RigidBody2D
 
 var _max_speed = 500
 var _min_speed = 100
-var _fast_step = 10
-var _slow_step = 20
+var _speed_increment = 10
+var _speed_decrement = 20
 
 func _ready():
 	_clamp_speed(_min_speed)
@@ -24,9 +24,9 @@ func _speed_update():
 	var velocity = get_linear_velocity()
 	var speed = velocity.length()
 	if speed > _min_speed:
-		_clamp_speed(max(speed - _slow_step, _min_speed))
+		_clamp_speed(max(speed - _speed_decrement, _min_speed))
 
-	#_min_speed += _fast_step
+	#_min_speed += _speed_increment
 	print(get_linear_velocity().length())
 
 func _change_direction(direction):
