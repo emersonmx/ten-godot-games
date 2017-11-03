@@ -1,25 +1,39 @@
 extends RigidBody2D
 
-var max_speed = 500
-var _hit_paddle = false
-var _hit_direction = Vector2()
+var _max_speed = 500
+var _min_speed = 100
+var _speed_step = 10
+var _slow_step = 20
 
 func _ready():
+	var velocity = get_linear_velocity()
+	_min_speed = velocity.length()
+
 	self.connect('body_enter', self, '_body_enter')
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	_clamp_speed(_max_speed)
+
+func _clamp_speed(speed):
 	var velocity = get_linear_velocity()
-	var speed = velocity.length()
-	if _hit_paddle:
-		_hit_paddle = false
-		velocity = velocity.rotated(velocity.angle_to(_hit_direction))
-	velocity = velocity.clamped(max_speed)
+	velocity = velocity.clamped(speed)
+	set_linear_velocity(velocity)
+
+func _speed_update():
+	_clamp_speed(_max_speed)
+
+	var velocity = get_linear_velocity()
+	print(velocity.length())
+
+func _change_direction(direction):
+	var velocity = get_linear_velocity()
+	velocity = velocity.rotated(velocity.angle_to(direction))
 	set_linear_velocity(velocity)
 
 func _body_enter(body):
-	if not body.is_in_group('pad'):
-		return
+	if body.is_in_group('speed_update'):
+		_speed_update()
 
-	_hit_direction = get_pos() - body.get_anchor()
-	_hit_paddle = true
+	if body.is_in_group('pad'):
+		_change_direction(get_pos() - body.get_anchor())
