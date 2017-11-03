@@ -17,8 +17,7 @@ func _fixed_process(delta):
 
 func _clamp_speed(speed):
 	var velocity = get_linear_velocity()
-	velocity = velocity.clamped(speed)
-	set_linear_velocity(velocity)
+	set_linear_velocity(velocity.clamped(speed))
 
 func _speed_update():
 	_clamp_speed(_max_speed)
@@ -28,12 +27,11 @@ func _speed_update():
 
 func _change_direction(direction):
 	var velocity = get_linear_velocity()
-	velocity = velocity.rotated(velocity.angle_to(direction))
-	set_linear_velocity(velocity)
+	set_linear_velocity(velocity.rotated(velocity.angle_to(direction)))
 
 func _body_enter(body):
-	if body.is_in_group('speed_update'):
-		_speed_update()
-
 	if body.is_in_group('pad'):
 		_change_direction(get_pos() - body.get_anchor())
+
+	if body.is_in_group('speed_update'):
+		_speed_update()
