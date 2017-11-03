@@ -2,12 +2,11 @@ extends RigidBody2D
 
 var _max_speed = 500
 var _min_speed = 100
-var _speed_step = 10
+var _fast_step = 10
 var _slow_step = 20
 
 func _ready():
-	var velocity = get_linear_velocity()
-	_min_speed = velocity.length()
+	_clamp_speed(_min_speed)
 
 	self.connect('body_enter', self, '_body_enter')
 	set_fixed_process(true)
@@ -23,7 +22,12 @@ func _speed_update():
 	_clamp_speed(_max_speed)
 
 	var velocity = get_linear_velocity()
-	print(velocity.length())
+	var speed = velocity.length()
+	if speed > _min_speed:
+		_clamp_speed(max(speed - _slow_step, _min_speed))
+
+	#_min_speed += _fast_step
+	print(get_linear_velocity().length())
 
 func _change_direction(direction):
 	var velocity = get_linear_velocity()
