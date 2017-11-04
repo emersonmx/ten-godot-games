@@ -46,7 +46,7 @@ func _body_enter(body):
 	if body.is_in_group('block'):
 		body.queue_free()
 
-	if body.is_in_group('pad'):
+	if body.is_in_group('paddle'):
 		_change_direction(get_pos() - body.get_anchor())
 
 	if body.is_in_group('update_ball_speed'):

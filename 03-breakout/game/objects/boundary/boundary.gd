@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 onready var area_node = get_node('area')
+onready var ball_scene = preload('res://objects/ball/ball.tscn')
 
 func _ready():
 	add_to_group('update_ball_speed')
@@ -11,4 +12,6 @@ func _body_exit(body):
 		return
 
 	body.queue_free()
-	print('Game Over!')
+	var ball = ball_scene.instance()
+	ball.set_pos(Vector2(128, 221))
+	add_child(ball)
