@@ -1,0 +1,248 @@
+[gd_scene load_steps=28 format=1]
+
+[ext_resource path="res://objects/boundary/tiles/tile01.tex" type="Texture" id=1]
+[ext_resource path="res://objects/boundary/tiles/tile02.tex" type="Texture" id=2]
+[ext_resource path="res://objects/boundary/tiles/tile03.tex" type="Texture" id=3]
+[ext_resource path="res://objects/boundary/tiles/tile04.tex" type="Texture" id=4]
+[ext_resource path="res://objects/boundary/tiles/tile05.tex" type="Texture" id=5]
+[ext_resource path="res://objects/boundary/tiles/tile06.tex" type="Texture" id=6]
+[ext_resource path="res://objects/boundary/tiles/tile07.tex" type="Texture" id=7]
+[ext_resource path="res://objects/boundary/tiles/tile08.tex" type="Texture" id=8]
+[ext_resource path="res://objects/boundary/tiles/tile09.tex" type="Texture" id=9]
+[ext_resource path="res://objects/boundary/tiles/tile10.tex" type="Texture" id=10]
+[ext_resource path="res://objects/boundary/tiles/tile11.tex" type="Texture" id=11]
+[ext_resource path="res://objects/boundary/tiles/tile12.tex" type="Texture" id=12]
+[ext_resource path="res://objects/boundary/tiles/tile13.tex" type="Texture" id=13]
+[ext_resource path="res://objects/boundary/tiles/tile14.tex" type="Texture" id=14]
+[ext_resource path="res://objects/boundary/tiles/tile15.tex" type="Texture" id=15]
+[ext_resource path="res://objects/boundary/tiles/tile16.tex" type="Texture" id=16]
+[ext_resource path="res://objects/boundary/tiles/tile17.tex" type="Texture" id=17]
+[ext_resource path="res://objects/boundary/tiles/tile18.tex" type="Texture" id=18]
+[ext_resource path="res://objects/boundary/tiles/tile19.tex" type="Texture" id=19]
+[ext_resource path="res://objects/boundary/tiles/tile20.tex" type="Texture" id=20]
+[ext_resource path="res://objects/boundary/tiles/tile21.tex" type="Texture" id=21]
+[ext_resource path="res://objects/boundary/tiles/tile22.tex" type="Texture" id=22]
+[ext_resource path="res://objects/boundary/tiles/tile23.tex" type="Texture" id=23]
+[ext_resource path="res://objects/boundary/tiles/tile24.tex" type="Texture" id=24]
+[ext_resource path="res://objects/boundary/tiles/tile25.tex" type="Texture" id=25]
+[ext_resource path="res://objects/boundary/tiles/tile26.tex" type="Texture" id=26]
+[ext_resource path="res://objects/boundary/tiles/tile27.tex" type="Texture" id=27]
+
+[node name="tiles" type="Node"]
+
+[node name="tile1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 0 )
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 0 )
+texture = ExtResource( 3 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 4 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 40, 0 )
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 48, 0 )
+texture = ExtResource( 6 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile7" type="Sprite" parent="."]
+
+transform/pos = Vector2( 56, 0 )
+texture = ExtResource( 7 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile8" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 8 )
+texture = ExtResource( 8 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile9" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 8 )
+texture = ExtResource( 9 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile10" type="Sprite" parent="."]
+
+transform/pos = Vector2( 40, 8 )
+texture = ExtResource( 10 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile11" type="Sprite" parent="."]
+
+transform/pos = Vector2( 48, 8 )
+texture = ExtResource( 11 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile12" type="Sprite" parent="."]
+
+transform/pos = Vector2( 56, 8 )
+texture = ExtResource( 12 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile13" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 16 )
+texture = ExtResource( 13 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile14" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 16 )
+texture = ExtResource( 14 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile15" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 16 )
+texture = ExtResource( 15 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile16" type="Sprite" parent="."]
+
+transform/pos = Vector2( 24, 16 )
+texture = ExtResource( 16 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile17" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 16 )
+texture = ExtResource( 17 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile18" type="Sprite" parent="."]
+
+transform/pos = Vector2( 40, 16 )
+texture = ExtResource( 18 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile19" type="Sprite" parent="."]
+
+transform/pos = Vector2( 48, 16 )
+texture = ExtResource( 19 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile20" type="Sprite" parent="."]
+
+transform/pos = Vector2( 56, 16 )
+texture = ExtResource( 20 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile21" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 24 )
+texture = ExtResource( 21 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile22" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 24 )
+texture = ExtResource( 22 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile23" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 24 )
+texture = ExtResource( 23 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile24" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 24 )
+texture = ExtResource( 24 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile25" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 32 )
+texture = ExtResource( 25 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile26" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 32 )
+texture = ExtResource( 26 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="tile27" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16, 32 )
+texture = ExtResource( 27 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+

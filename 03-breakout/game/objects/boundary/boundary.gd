@@ -3,6 +3,7 @@ extends StaticBody2D
 onready var area_node = get_node('area')
 
 func _ready():
+	add_to_group('update_ball_speed')
 	area_node.connect('body_exit', self, '_body_exit')
 
 func _body_exit(body):

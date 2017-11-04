@@ -7,6 +7,7 @@ var speed = 200;
 var padding = 20
 
 func _ready():
+	add_to_group('update_ball_speed')
 	set_fixed_process(true)
 
 func _fixed_process(delta):
