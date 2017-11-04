@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://objects/boundary/boundary.gd" type="Script" id=1]
+[ext_resource path="res://objects/boundary/boundaries.tres" type="TileSet" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 272, -16, 272, 240, 248, 240, 248, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -16, -16, 272, -16, 248, 8, 8, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -16, 240, -16, -16, 8, 8, 8, 240 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 128, 120 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 128, 4 )
+
+[node name="boundary" type="StaticBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 1.0
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="shape" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -16, -16, 272, -16, 272, 240, 248, 240, 248, 8, 8, 8, 8, 240, -16, 240 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+[node name="area" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 128, 120 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="shape" type="CollisionShape2D" parent="area"]
+
+visibility/opacity = 0.5
+shape = SubResource( 4 )
+trigger = true
+_update_shape_index = 0
+
+[node name="bottom_wall" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 128, 236 )
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+one_way_collision/direction = Vector2( 0, -1 )
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 1.0
+
+[node name="shape" type="CollisionShape2D" parent="bottom_wall"]
+
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 0, 1, 536870913, 2, 536870913, 3, 536870913, 4, 536870913, 5, 536870913, 6, 12, 7, 13, 8, 14, 9, 15, 10, 536870913, 11, 536870913, 12, 536870913, 13, 536870913, 14, 12, 15, 13, 16, 13, 17, 14, 18, 15, 19, 1, 20, 1, 21, 1, 22, 1, 23, 12, 24, 13, 25, 14, 26, 15, 27, 1, 28, 1, 29, 1, 30, 1, 31, 2, 65536, 7, 65567, 7, 131072, 7, 131103, 7, 196608, 3, 196639, 3, 262144, 8, 262175, 8, 327680, 16, 327711, 16, 393216, 23, 393247, 23, 458752, 7, 458783, 7, 524288, 7, 524319, 7, 589824, 7, 589855, 7, 655360, 3, 655391, 3, 720896, 8, 720927, 8, 786432, 16, 786463, 16, 851968, 23, 851999, 23, 917504, 7, 917535, 7, 983040, 7, 983071, 7, 1048576, 7, 1048607, 7, 1114112, 3, 1114143, 3, 1179648, 8, 1179679, 8, 1245184, 16, 1245215, 16, 1310720, 23, 1310751, 23, 1376256, 7, 1376287, 7, 1441792, 7, 1441823, 7, 1507328, 7, 1507359, 7, 1572864, 3, 1572895, 3, 1638400, 8, 1638431, 8, 1703936, 16, 1703967, 16, 1769472, 23, 1769503, 23, 1835008, 7, 1835039, 7, 1900544, 7, 1900575, 7 )
+
+

@@ -1,594 +1,403 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://objects/boundary/boundary.gd" type="Script" id=1]
-[ext_resource path="res://objects/boundary/boundaries.tres" type="TileSet" id=2]
-[ext_resource path="res://objects/ball/ball.gd" type="Script" id=3]
-[ext_resource path="res://objects/ball/ball.tex" type="Texture" id=4]
-[ext_resource path="res://objects/paddle/paddle.gd" type="Script" id=5]
-[ext_resource path="res://objects/paddle/normal.tex" type="Texture" id=6]
-[ext_resource path="res://objects/blocks/block09.tscn" type="PackedScene" id=7]
-[ext_resource path="res://objects/blocks/block05.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/blocks/block06.tscn" type="PackedScene" id=9]
-[ext_resource path="res://objects/blocks/block08.tscn" type="PackedScene" id=10]
-[ext_resource path="res://objects/blocks/block07.tscn" type="PackedScene" id=11]
-[ext_resource path="res://objects/blocks/block04.tscn" type="PackedScene" id=12]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-
-custom_solver_bias = 0.0
-points = Vector2Array( 272, -16, 272, 240, 248, 240, 248, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -16, -16, 272, -16, 248, 8, 8, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -16, 240, -16, -16, 8, 8, 8, 240 )
-
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 128, 120 )
-
-[sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
-extents = Vector2( 128, 4 )
-
-[sub_resource type="RectangleShape2D" id=9]
-
-custom_solver_bias = 0.0
-extents = Vector2( 2, 2 )
-
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
-extents = Vector2( 16, 4 )
+[ext_resource path="res://objects/boundary/boundary.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/ball/ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/paddle/paddle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/blocks/block09.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/blocks/block05.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/blocks/block06.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/blocks/block08.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/blocks/block07.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/blocks/block04.tscn" type="PackedScene" id=9]
 
 [node name="level" type="Node2D"]
 
-[node name="boundary" type="StaticBody2D" parent="."]
+[node name="boundary" parent="." instance=ExtResource( 1 )]
 
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 2 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/1/trigger = false
-shapes/2/shape = SubResource( 3 )
-shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/2/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 1.0
-script/script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
+[node name="ball" parent="." instance=ExtResource( 2 )]
 
-[node name="shape" type="CollisionPolygon2D" parent="boundary"]
+transform/pos = Vector2( 128, 221 )
 
-build_mode = 0
-polygon = Vector2Array( -16, -16, 272, -16, 272, 240, 248, 240, 248, 8, 8, 8, 8, 240, -16, 240 )
-shape_range = Vector2( 0, 2 )
-trigger = false
-
-[node name="area" type="Area2D" parent="boundary"]
-
-editor/display_folded = true
-transform/pos = Vector2( 128, 120 )
-input/pickable = true
-shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="shape" type="CollisionShape2D" parent="boundary/area"]
-
-visibility/opacity = 0.5
-shape = SubResource( 4 )
-trigger = true
-_update_shape_index = 0
-
-[node name="bottom_wall" type="StaticBody2D" parent="boundary"]
-
-transform/pos = Vector2( 128, 236 )
-input/pickable = false
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 1.0
-
-[node name="shape" type="CollisionShape2D" parent="boundary/bottom_wall"]
-
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
-
-[node name="tilemap" type="TileMap" parent="boundary"]
-
-mode = 0
-tile_set = ExtResource( 2 )
-cell/size = Vector2( 8, 8 )
-cell/quadrant_size = 16
-cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-cell/half_offset = 2
-cell/tile_origin = 0
-cell/y_sort = false
-collision/use_kinematic = false
-collision/friction = 1.0
-collision/bounce = 0.0
-collision/layers = 1
-collision/mask = 1
-occluder/light_mask = 1
-tile_data = IntArray( 0, 0, 1, 536870913, 2, 536870913, 3, 536870913, 4, 536870913, 5, 536870913, 6, 12, 7, 13, 8, 14, 9, 15, 10, 536870913, 11, 536870913, 12, 536870913, 13, 536870913, 14, 12, 15, 13, 16, 13, 17, 14, 18, 15, 19, 1, 20, 1, 21, 1, 22, 1, 23, 12, 24, 13, 25, 14, 26, 15, 27, 1, 28, 1, 29, 1, 30, 1, 31, 2, 65536, 7, 65567, 7, 131072, 7, 131103, 7, 196608, 3, 196639, 3, 262144, 8, 262175, 8, 327680, 16, 327711, 16, 393216, 23, 393247, 23, 458752, 7, 458783, 7, 524288, 7, 524319, 7, 589824, 7, 589855, 7, 655360, 3, 655391, 3, 720896, 8, 720927, 8, 786432, 16, 786463, 16, 851968, 23, 851999, 23, 917504, 7, 917535, 7, 983040, 7, 983071, 7, 1048576, 7, 1048607, 7, 1114112, 3, 1114143, 3, 1179648, 8, 1179679, 8, 1245184, 16, 1245215, 16, 1310720, 23, 1310751, 23, 1376256, 7, 1376287, 7, 1441792, 7, 1441823, 7, 1507328, 7, 1507359, 7, 1572864, 3, 1572895, 3, 1638400, 8, 1638431, 8, 1703936, 16, 1703967, 16, 1769472, 23, 1769503, 23, 1835008, 7, 1835039, 7, 1900544, 7, 1900575, 7 )
-
-[node name="ball" type="RigidBody2D" parent="." groups=[
-"ball",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 128, 222 )
-input/pickable = false
-shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-mode = 2
-mass = 0.01
-friction = 0.0
-bounce = 1.0
-gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = 2
-contacts_reported = 1
-contact_monitor = true
-sleeping = false
-can_sleep = true
-velocity/linear = Vector2( 100, -100 )
-velocity/angular = 0.0
-damp_override/linear = 0.0
-damp_override/angular = 0.0
-script/script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="sprite" type="Sprite" parent="ball"]
-
-texture = ExtResource( 4 )
-offset = Vector2( 1.5, 2 )
-
-[node name="shape" type="CollisionShape2D" parent="ball"]
-
-shape = SubResource( 9 )
-trigger = false
-_update_shape_index = 0
-
-[node name="paddle" type="KinematicBody2D" parent="." groups=[
-"pad",
-]]
+[node name="paddle" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 128, 228 )
-input/pickable = false
-shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-min_padding = 8
-max_padding = 8
-
-[node name="shape" type="CollisionShape2D" parent="paddle"]
-
-shape = SubResource( 7 )
-trigger = false
-_update_shape_index = 0
-
-[node name="sprite" type="Sprite" parent="paddle"]
-
-texture = ExtResource( 6 )
 
 [node name="blocks" type="Node2D" parent="."]
 
-[node name="silver1" parent="blocks" instance=ExtResource( 7 )]
+editor/display_folded = true
+
+[node name="silver1" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 16, 44 )
 
-[node name="silver2" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver2" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 32, 44 )
 
-[node name="silver3" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver3" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 48, 44 )
 
-[node name="silver4" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver4" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 44 )
 
-[node name="silver5" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver5" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 80, 44 )
 
-[node name="silver6" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver6" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 96, 44 )
 
-[node name="silver7" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver7" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 112, 44 )
 
-[node name="silver8" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver8" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 44 )
 
-[node name="silver9" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver9" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 144, 44 )
 
-[node name="silver10" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver10" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 160, 44 )
 
-[node name="silver11" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver11" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 176, 44 )
 
-[node name="silver12" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver12" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 192, 44 )
 
-[node name="silver13" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver13" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 208, 44 )
 
-[node name="silver14" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver14" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 224, 44 )
 
-[node name="silver15" parent="blocks" instance=ExtResource( 7 )]
+[node name="silver15" parent="blocks" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 240, 44 )
 
-[node name="red1" parent="blocks" instance=ExtResource( 8 )]
+[node name="red1" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 16, 52 )
 
-[node name="red2" parent="blocks" instance=ExtResource( 8 )]
+[node name="red2" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 32, 52 )
 
-[node name="red3" parent="blocks" instance=ExtResource( 8 )]
+[node name="red3" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 48, 52 )
 
-[node name="red4" parent="blocks" instance=ExtResource( 8 )]
+[node name="red4" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 64, 52 )
 
-[node name="red5" parent="blocks" instance=ExtResource( 8 )]
+[node name="red5" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 80, 52 )
 
-[node name="red6" parent="blocks" instance=ExtResource( 8 )]
+[node name="red6" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 96, 52 )
 
-[node name="red7" parent="blocks" instance=ExtResource( 8 )]
+[node name="red7" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 112, 52 )
 
-[node name="red8" parent="blocks" instance=ExtResource( 8 )]
+[node name="red8" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 128, 52 )
 
-[node name="red9" parent="blocks" instance=ExtResource( 8 )]
+[node name="red9" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 144, 52 )
 
-[node name="red10" parent="blocks" instance=ExtResource( 8 )]
+[node name="red10" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 160, 52 )
 
-[node name="red11" parent="blocks" instance=ExtResource( 8 )]
+[node name="red11" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 176, 52 )
 
-[node name="red12" parent="blocks" instance=ExtResource( 8 )]
+[node name="red12" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 192, 52 )
 
-[node name="red13" parent="blocks" instance=ExtResource( 8 )]
+[node name="red13" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 208, 52 )
 
-[node name="red14" parent="blocks" instance=ExtResource( 8 )]
+[node name="red14" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 224, 52 )
 
-[node name="red15" parent="blocks" instance=ExtResource( 8 )]
+[node name="red15" parent="blocks" instance=ExtResource( 5 )]
 
 editor/display_folded = false
 transform/pos = Vector2( 240, 52 )
 
-[node name="blue1" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue1" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 16, 60 )
 
-[node name="blue2" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue2" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 32, 60 )
 
-[node name="blue3" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue3" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 48, 60 )
 
-[node name="blue4" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue4" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 64, 60 )
 
-[node name="blue5" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue5" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 80, 60 )
 
-[node name="blue6" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue6" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 96, 60 )
 
-[node name="blue7" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue7" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 112, 60 )
 
-[node name="blue8" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue8" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 128, 60 )
 
-[node name="blue9" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue9" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 144, 60 )
 
-[node name="blue10" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue10" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 160, 60 )
 
-[node name="blue11" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue11" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 176, 60 )
 
-[node name="blue12" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue12" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 192, 60 )
 
-[node name="blue13" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue13" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 208, 60 )
 
-[node name="blue14" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue14" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 224, 60 )
 
-[node name="blue15" parent="blocks" instance=ExtResource( 9 )]
+[node name="blue15" parent="blocks" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 240, 60 )
 
-[node name="orange1" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange1" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 16, 68 )
 
-[node name="orange2" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange2" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 32, 68 )
 
-[node name="orange3" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange3" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 48, 68 )
 
-[node name="orange4" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange4" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 64, 68 )
 
-[node name="orange5" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange5" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 80, 68 )
 
-[node name="orange6" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange6" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 96, 68 )
 
-[node name="orange7" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange7" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 112, 68 )
 
-[node name="orange8" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange8" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 128, 68 )
 
-[node name="orange9" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange9" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 144, 68 )
 
-[node name="orange10" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange10" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 160, 68 )
 
-[node name="orange11" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange11" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 176, 68 )
 
-[node name="orange12" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange12" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 192, 68 )
 
-[node name="orange13" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange13" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 208, 68 )
 
-[node name="orange14" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange14" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 224, 68 )
 
-[node name="orange15" parent="blocks" instance=ExtResource( 10 )]
+[node name="orange15" parent="blocks" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 240, 68 )
 
-[node name="pink1" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink1" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 16, 76 )
 
-[node name="pink2" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink2" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 32, 76 )
 
-[node name="pink3" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink3" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 48, 76 )
 
-[node name="pink4" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink4" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 64, 76 )
 
-[node name="pink5" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink5" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 80, 76 )
 
-[node name="pink6" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink6" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 96, 76 )
 
-[node name="pink7" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink7" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 112, 76 )
 
-[node name="pink8" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink8" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 128, 76 )
 
-[node name="pink9" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink9" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 144, 76 )
 
-[node name="pink10" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink10" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 160, 76 )
 
-[node name="pink11" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink11" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 176, 76 )
 
-[node name="pink12" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink12" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 192, 76 )
 
-[node name="pink13" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink13" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 208, 76 )
 
-[node name="pink14" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink14" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 224, 76 )
 
-[node name="pink15" parent="blocks" instance=ExtResource( 11 )]
+[node name="pink15" parent="blocks" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 240, 76 )
 
-[node name="green1" parent="blocks" instance=ExtResource( 12 )]
+[node name="green1" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 16, 84 )
 
-[node name="green2" parent="blocks" instance=ExtResource( 12 )]
+[node name="green2" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 32, 84 )
 
-[node name="green3" parent="blocks" instance=ExtResource( 12 )]
+[node name="green3" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 48, 84 )
 
-[node name="green4" parent="blocks" instance=ExtResource( 12 )]
+[node name="green4" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 64, 84 )
 
-[node name="green5" parent="blocks" instance=ExtResource( 12 )]
+[node name="green5" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 80, 84 )
 
-[node name="green6" parent="blocks" instance=ExtResource( 12 )]
+[node name="green6" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 96, 84 )
 
-[node name="green7" parent="blocks" instance=ExtResource( 12 )]
+[node name="green7" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 112, 84 )
 
-[node name="green8" parent="blocks" instance=ExtResource( 12 )]
+[node name="green8" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 128, 84 )
 
-[node name="green9" parent="blocks" instance=ExtResource( 12 )]
+[node name="green9" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 144, 84 )
 
-[node name="green10" parent="blocks" instance=ExtResource( 12 )]
+[node name="green10" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 160, 84 )
 
-[node name="green11" parent="blocks" instance=ExtResource( 12 )]
+[node name="green11" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 176, 84 )
 
-[node name="green12" parent="blocks" instance=ExtResource( 12 )]
+[node name="green12" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 192, 84 )
 
-[node name="green13" parent="blocks" instance=ExtResource( 12 )]
+[node name="green13" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 208, 84 )
 
-[node name="green14" parent="blocks" instance=ExtResource( 12 )]
+[node name="green14" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 224, 84 )
 
-[node name="green15" parent="blocks" instance=ExtResource( 12 )]
+[node name="green15" parent="blocks" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 240, 84 )
 

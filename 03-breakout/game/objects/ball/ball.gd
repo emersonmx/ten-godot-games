@@ -8,6 +8,8 @@ var _speed_decrement = 10
 func _ready():
 	_clamp_speed(_min_speed)
 
+	add_to_group('ball')
+
 	self.connect('body_enter', self, '_body_enter')
 	set_fixed_process(true)
 
