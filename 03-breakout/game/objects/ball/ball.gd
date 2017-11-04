@@ -36,8 +36,6 @@ func _update_speed():
 	if _min_speed > _max_speed:
 		_min_speed = _max_speed
 
-	print(get_linear_velocity().length())
-
 func _change_direction(direction):
 	var velocity = get_linear_velocity()
 	set_linear_velocity(velocity.rotated(velocity.angle_to(direction)))
