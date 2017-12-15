@@ -2,10 +2,13 @@ extends Node
 
 export (PackedScene) var default_asteroid
 
+onready var explosion_scene = preload('res://objects/explosion/explosion.tscn')
 onready var spawns = get_node('spawn_locations')
 onready var asteroids = get_node('asteroids')
+onready var spaceship = get_node('spaceship')
 
 func _ready():
+	spaceship.connect('explode', self, '_on_spaceship_explode')
 	spawn_asteroids()
 	set_process(true)
 
@@ -25,6 +28,9 @@ func spawn_asteroid(asteroid_scene, position, velocity):
 	asteroid.set_pos(position)
 	asteroid.connect('explode', self, '_on_asteroid_explode')
 
+func _on_spaceship_explode():
+	_show_explosion(spaceship.get_pos())
+
 func _on_asteroid_explode(pieces, position, velocity, hit_velocity):
 	if pieces.size() == 0:
 		return
@@ -35,3 +41,11 @@ func _on_asteroid_explode(pieces, position, velocity, hit_velocity):
 		var new_velocity = (velocity + hit_velocity.tangent() * offset) * 0.9
 		var piece = pieces[rand_range(0, pieces.size())]
 		spawn_asteroid(piece, new_position, new_velocity)
+
+	_show_explosion(position)
+
+func _show_explosion(position):
+	var explosion = explosion_scene.instance()
+	add_child(explosion)
+	explosion.set_pos(position)
+	explosion.play()

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal explode
+
 export var rotation_speed = 2.6
 export var thrust = 500
 export var max_velocity = 400
@@ -17,6 +19,9 @@ onready var gun_timer = get_node('gun_timer')
 
 func _ready():
 	set_pos(position)
+
+	self.connect('body_enter', self, '_on_body_enter')
+
 	set_process(true)
 
 func _process(delta):
@@ -57,3 +62,14 @@ func shoot():
 	var bullet = bullet_scene.instance()
 	bullets.add_child(bullet)
 	bullet.start_at(get_rot(), muzzle.get_global_pos(), velocity)
+
+func disable():
+	hide()
+	set_process(false)
+
+func _on_body_enter(body):
+	if not body.is_in_group('asteroids'):
+		return
+
+	disable()
+	emit_signal('explode')
