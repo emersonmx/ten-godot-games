@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/main/main.gd" type="Script" id=1]
 [ext_resource path="res://objects/asteroids/asteroid_grey_big4.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/starfield.tex" type="Texture" id=3]
 [ext_resource path="res://objects/spaceship/spaceship.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/KenVector Future.fnt" type="BitmapFont" id=5]
 
 [node name="main" type="Node"]
 
@@ -55,5 +56,22 @@ transform/pos = Vector2( 531.091, 557.748 )
 [node name="position8" type="Position2D" parent="spawn_locations"]
 
 transform/pos = Vector2( 971.957, 555.697 )
+
+[node name="gameover" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 346.0
+margin/top = 167.0
+margin/right = 676.0
+margin/bottom = 202.0
+custom_fonts/font = ExtResource( 5 )
+text = "Game Over"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

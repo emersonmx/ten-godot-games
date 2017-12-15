@@ -6,6 +6,7 @@ onready var explosion_scene = preload('res://objects/explosion/explosion.tscn')
 onready var spawns = get_node('spawn_locations')
 onready var asteroids = get_node('asteroids')
 onready var spaceship = get_node('spaceship')
+onready var gameover_label = get_node('gameover')
 
 func _ready():
 	spaceship.connect('explode', self, '_on_spaceship_explode')
@@ -30,6 +31,7 @@ func spawn_asteroid(asteroid_scene, position, velocity):
 
 func _on_spaceship_explode():
 	_show_explosion(spaceship.get_pos())
+	gameover_label.show()
 
 func _on_asteroid_explode(pieces, position, velocity, hit_velocity):
 	if pieces.size() == 0:
