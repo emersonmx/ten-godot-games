@@ -15,6 +15,8 @@ default_asteroid = ExtResource( 2 )
 
 [node name="spawn_locations" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="position1" type="Position2D" parent="spawn_locations"]
 
 transform/pos = Vector2( 81.3459, 22.0457 )

@@ -3,16 +3,25 @@ extends Node
 export (PackedScene) var default_asteroid
 
 onready var spawns = get_node('spawn_locations')
+onready var asteroids = get_node('asteroids')
 
 func _ready():
+	spawn_asteroids()
+	set_process(true)
+
+func spawn_asteroids():
 	for i in range(spawns.get_child_count()):
 		spawn_asteroid(default_asteroid,
 			spawns.get_child(i).get_pos(),
 			Vector2(0, 0))
 
+func _process(delta):
+	if (asteroids.get_child_count() == 0):
+		spawn_asteroids()
+
 func spawn_asteroid(asteroid_scene, position, velocity):
 	var asteroid = asteroid_scene.instance()
-	add_child(asteroid)
+	asteroids.add_child(asteroid)
 	asteroid.set_pos(position)
 	asteroid.connect('explode', self, '_on_asteroid_explode')
 
