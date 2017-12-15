@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://objects/spaceship/spaceship.gd" type="Script" id=1]
 [ext_resource path="res://objects/spaceship/bullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/sheet.playerShip2_red.atex" type="Texture" id=3]
+[ext_resource path="res://assets/sheet.fire16.atex" type="Texture" id=3]
+[ext_resource path="res://assets/sheet.fire17.atex" type="Texture" id=4]
+[ext_resource path="res://assets/sheet.playerShip2_red.atex" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 18.0007
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="spaceship" type="Area2D"]
 
@@ -29,10 +40,18 @@ max_velocity = 400
 friction = 0.65
 bullet_scene = ExtResource( 2 )
 
+[node name="exhaust" type="AnimatedSprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 0, 35 )
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+
 [node name="sprite" type="Sprite" parent="."]
 
 transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
 

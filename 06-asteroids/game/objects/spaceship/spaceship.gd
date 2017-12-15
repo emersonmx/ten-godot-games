@@ -16,6 +16,7 @@ onready var screen_size = get_viewport_rect().size
 onready var position = screen_size / 2
 onready var bullets = get_node('bullets')
 onready var gun_timer = get_node('gun_timer')
+onready var exhaust = get_node('exhaust')
 
 func _ready():
 	set_pos(position)
@@ -31,8 +32,10 @@ func _process(delta):
 		rotation -= rotation_speed * delta
 	if Input.is_action_pressed('thrust'):
 		acceleration = Vector2(thrust, 0).rotated(rotation)
+		exhaust.show()
 	else:
 		acceleration = Vector2()
+		exhaust.hide()
 	if Input.is_action_pressed('shoot'):
 		shoot()
 
