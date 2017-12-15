@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal exploded
+signal explode
 
 export var bounce = 1.1
 export (Array) var pieces
@@ -23,6 +23,7 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	velocity = velocity.clamped(300)
 	set_rot(get_rot() + rotation_speed * delta)
 	move(velocity * delta)
 	if is_colliding():
@@ -44,5 +45,5 @@ func _fixed_process(delta):
 	set_pos(position)
 
 func explode(hit_velocity):
-	emit_signal('exploded', pieces, get_pos(), velocity, hit_velocity)
+	emit_signal('explode', pieces, get_pos(), velocity, hit_velocity)
 	queue_free()

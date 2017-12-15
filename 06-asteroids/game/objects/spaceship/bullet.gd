@@ -37,5 +37,6 @@ func _on_lifetime_timeout():
 func _on_bullet_body_enter(body):
 	if not body.is_in_group('asteroids'):
 		return
+
 	queue_free()
 	body.explode(velocity.normalized())
