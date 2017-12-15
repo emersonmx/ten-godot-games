@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://objects/asteroids/asteroid.gd" type="Script" id=1]
-[ext_resource path="res://assets/sheet.meteorGrey_big4.atex" type="Texture" id=2]
+[ext_resource path="res://assets/sheet.meteorGrey_tiny2.atex" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -35.0979, -34.6489, 18.5975, -46.9724, 48.9663, -12.2024, 30.0408, 41.9332, -19.2534, 47.6548, -47.4215, 11.5645 )
+points = Vector2Array( 7.99553, -2.73908, 2.01491, 7.5134, -7.3832, 0.820807, -0.833, -8.00772 )
 
-[node name="asteroid_gray_big4" type="KinematicBody2D"]
+[node name="asteroid_grey_tiny2" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -22,6 +22,7 @@ __meta__ = {
 "_edit_group_": true
 }
 bounce = 1.1
+pieces = [  ]
 
 [node name="sprite" type="Sprite" parent="."]
 
@@ -30,7 +31,7 @@ texture = ExtResource( 2 )
 [node name="shape" type="CollisionPolygon2D" parent="."]
 
 build_mode = 0
-polygon = Vector2Array( -35.0979, -34.6489, 18.5975, -46.9724, 48.9663, -12.2024, 30.0408, 41.9332, -19.2534, 47.6548, -47.4215, 11.5645 )
+polygon = Vector2Array( 7.99553, -2.73908, 2.01491, 7.5134, -7.3832, 0.820807, -0.833, -8.00772 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 

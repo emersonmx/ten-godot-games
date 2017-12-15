@@ -1,14 +1,50 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scenes/main/main.gd" type="Script" id=1]
-[ext_resource path="res://objects/spaceship/spaceship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/asteroids/asteroid_grey_big4.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/spaceship/spaceship.tscn" type="PackedScene" id=3]
 
 [node name="main" type="Node"]
 
 script/script = ExtResource( 1 )
+default_asteroid = ExtResource( 2 )
 
-[node name="spaceship" parent="." instance=ExtResource( 2 )]
+[node name="spaceship" parent="." instance=ExtResource( 3 )]
 
 [node name="asteroids" type="Node" parent="."]
+
+[node name="spawn_locations" type="Node" parent="."]
+
+[node name="position1" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 81.3459, 22.0457 )
+
+[node name="position2" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 534.646, 35.457 )
+
+[node name="position3" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 955.553, 61.5163 )
+
+[node name="position4" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 14.3538, 274.773 )
+
+[node name="position5" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 982.21, 305.531 )
+
+[node name="position6" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 36.9098, 555.697 )
+
+[node name="position7" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 531.091, 557.748 )
+
+[node name="position8" type="Position2D" parent="spawn_locations"]
+
+transform/pos = Vector2( 971.957, 555.697 )
 
 

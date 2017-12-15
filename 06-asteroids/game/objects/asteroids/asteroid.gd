@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var bounce = 1.1
+export (Array) var pieces
 
 var velocity = Vector2()
 var rotation_speed
