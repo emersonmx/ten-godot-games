@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://objects/asteroid/asteroid.gd" type="Script" id=1]
+[ext_resource path="res://objects/asteroids/asteroid.gd" type="Script" id=1]
 [ext_resource path="res://assets/sheet.meteorGrey_big4.atex" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 points = Vector2Array( -35.0979, -34.6489, 18.5975, -46.9724, 48.9663, -12.2024, 30.0408, 41.9332, -19.2534, 47.6548, -47.4215, 11.5645 )
 
-[node name="asteroid" type="KinematicBody2D"]
+[node name="asteroid_gray_big4" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
