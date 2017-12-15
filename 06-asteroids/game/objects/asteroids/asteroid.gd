@@ -28,7 +28,8 @@ func _fixed_process(delta):
 	move(velocity * delta)
 	if is_colliding():
 		var collider = get_collider()
-		velocity += get_collision_normal() * (collider.velocity.length() * bounce)
+		var normal = get_collision_normal()
+		velocity += normal * (collider.velocity.length() * bounce)
 		puff.set_global_pos(get_collision_pos())
 		puff.set_emitting(true)
 

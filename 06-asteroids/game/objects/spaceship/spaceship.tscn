@@ -50,7 +50,7 @@ transform/pos = Vector2( 0, -35 )
 [node name="gun_timer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 autostart = false
 
