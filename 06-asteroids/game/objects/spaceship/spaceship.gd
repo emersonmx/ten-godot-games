@@ -4,6 +4,7 @@ export var rotation_speed = 2.6
 export var thrust = 500
 export var max_velocity = 400
 export var friction = 0.65
+export (PackedScene) var bullet_scene
 
 var rotation = PI/2
 var velocity = Vector2()
@@ -11,6 +12,8 @@ var acceleration = Vector2()
 
 onready var screen_size = get_viewport_rect().size
 onready var position = screen_size / 2
+onready var bullets = get_node('bullets')
+onready var gun_timer = get_node('gun_timer')
 
 func _ready():
 	set_pos(position)
@@ -25,6 +28,8 @@ func _process(delta):
 		acceleration = Vector2(thrust, 0).rotated(rotation)
 	else:
 		acceleration = Vector2()
+	if Input.is_action_pressed('shoot'):
+		shoot()
 
 	acceleration += velocity * -friction
 	velocity += acceleration * delta
@@ -41,3 +46,14 @@ func _process(delta):
 
 	set_pos(position)
 	set_rot(rotation - PI/2)
+
+func shoot():
+	if gun_timer.get_time_left() != 0:
+		return
+
+	gun_timer.start()
+
+	var muzzle = get_node('muzzle')
+	var bullet = bullet_scene.instance()
+	bullets.add_child(bullet)
+	bullet.start_at(get_rot(), muzzle.get_global_pos(), velocity)
