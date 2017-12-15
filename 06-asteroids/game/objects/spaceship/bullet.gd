@@ -9,6 +9,7 @@ onready var screen_size = get_viewport_rect().size
 
 func _ready():
 	lifetime_node.connect('timeout', self, '_on_lifetime_timeout')
+	self.connect('body_enter', self, '_on_bullet_body_enter')
 
 	set_fixed_process(true)
 
@@ -32,3 +33,9 @@ func _fixed_process(delta):
 
 func _on_lifetime_timeout():
 	queue_free()
+
+func _on_bullet_body_enter(body):
+	if not body.is_in_group('asteroids'):
+		return
+	queue_free()
+	body.explode(velocity.normalized())

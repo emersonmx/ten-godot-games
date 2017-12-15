@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal exploded
+
 export var bounce = 1.1
 export (Array) var pieces
 
@@ -15,6 +17,8 @@ func _ready():
 	randomize()
 	velocity = Vector2(rand_range(30, 100), 0).rotated(rand_range(0, 2*PI))
 	rotation_speed = rand_range(-1.5, 1.5)
+
+	add_to_group('asteroids')
 
 	set_fixed_process(true)
 
@@ -38,3 +42,7 @@ func _fixed_process(delta):
 		position.y = screen_size.height + extents.height
 
 	set_pos(position)
+
+func explode(hit_velocity):
+	emit_signal('exploded', pieces, get_pos(), velocity, hit_velocity)
+	queue_free()
