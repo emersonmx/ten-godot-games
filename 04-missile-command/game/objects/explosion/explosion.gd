@@ -23,11 +23,15 @@ func get_radius():
 
 func _ready():
 	randomize()
+	add_to_group('explosion')
 
 	var shape = CircleShape2D.new()
 	get_node('shape').set_shape(shape)
-	add_to_group('explosion')
+	get_node('animation').connect('finished', self, '_on_animation_finished')
 
 func _draw():
 	var color = colors[rand_range(0, colors.size())]
 	draw_circle(shape.get_pos(), radius, color)
+
+func _on_animation_finished():
+	queue_free()

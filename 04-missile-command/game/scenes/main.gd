@@ -24,3 +24,9 @@ func _input(event):
 		launchers.add_child(launcher)
 		launcher.target.set_pos(event.pos)
 		launcher.missile.set_pos(_get_launcher_position())
+		launcher.connect('missile_exploded', self, '_on_explosion')
+
+func _on_explosion(position):
+	var explosion = explosion_scene.instance()
+	add_child(explosion)
+	explosion.set_pos(position)
