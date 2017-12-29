@@ -12,7 +12,7 @@ radius = 2.0
 [sub_resource type="ColorRamp" id=5]
 
 offsets = FloatArray( 0, 0.51462, 1 )
-colors = ColorArray( 1, 0.28125, 0, 1, 0.183594, 0.124786, 0, 1, 0, 0, 0, 0 )
+colors = ColorArray( 0.890196, 0.317647, 0, 1, 0.183594, 0.124786, 0, 1, 0, 0, 0, 0 )
 
 [sub_resource type="Animation" id=3]
 
