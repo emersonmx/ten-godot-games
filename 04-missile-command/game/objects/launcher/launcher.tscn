@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 radius = 2.0
 
-[sub_resource type="ColorRamp" id=5]
+[sub_resource type="ColorRamp" id=2]
 
 offsets = FloatArray( 0, 0.51462, 1 )
 colors = ColorArray( 0.890196, 0.317647, 0, 1, 0.183594, 0.124786, 0, 1, 0, 0, 0, 0 )
@@ -79,10 +79,11 @@ params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 randomness/spread = 1.0
 randomness/spin_velocity = 1.0
-color/color_ramp = SubResource( 5 )
+color/color_ramp = SubResource( 2 )
 
 [node name="sprite" type="Sprite" parent="missile"]
 
+editor/display_folded = true
 texture = ExtResource( 3 )
 hframes = 2
 
@@ -106,7 +107,6 @@ _update_shape_index = 0
 
 [node name="target" type="Area2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( -10, -10 )
 input/pickable = true
 shapes/0/shape = SubResource( 4 )

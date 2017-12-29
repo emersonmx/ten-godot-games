@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 export (float) var speed = 2
+
+var explosion_scene = preload('res://objects/explosion/explosion.tscn')
+
 var target = null
 var velocity = Vector2()
 
@@ -23,5 +26,5 @@ func _fixed_process(delta):
 
 func explode():
 	smoke.set_emitting(false)
-	get_node('sprite').hide()
-	get_node('shape').hide()
+	get_node('sprite').queue_free()
+	get_node('shape').queue_free()
