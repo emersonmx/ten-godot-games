@@ -4,14 +4,12 @@ var explosion_scene = preload('res://objects/explosion/explosion.tscn')
 
 onready var missile = get_node('missile')
 onready var target = get_node('target')
-onready var timer = get_node('timer')
 
 func _ready():
 	missile.target = target
 	target.connect('body_enter', self, '_on_body_enter')
 
 func _on_body_enter(body):
-	print(body, body.is_in_group('explosion'))
 	if body != missile:
 		return
 
