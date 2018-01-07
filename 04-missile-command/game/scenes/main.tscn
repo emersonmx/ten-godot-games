@@ -1,25 +1,16 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
+[ext_resource path="res://objects/launcher/launcher.tscn" type="PackedScene" id=2]
 
 [node name="main" type="Node"]
 
 script/script = ExtResource( 1 )
 
-[node name="positions" type="Node" parent="."]
-
-[node name="position1" type="Position2D" parent="positions"]
-
-transform/pos = Vector2( 22, 224 )
-
-[node name="position2" type="Position2D" parent="positions"]
-
-transform/pos = Vector2( 127, 224 )
-
-[node name="position3" type="Position2D" parent="positions"]
-
-transform/pos = Vector2( 230, 221 )
-
 [node name="launchers" type="Node" parent="."]
+
+[node name="launcher" parent="launchers" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 128, 227 )
 
 
