@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/default.sv.png-db3d422e042b686b8290648b966d5958.stex"
+path="res://.import/pad.png-480982c80ccabf4e1d7c145f4eaec700.stex"
 
 [deps]
 
-source_md5="a9d974875c812f2dd34152ee93251088"
+source_file="res://pad.png"
+source_md5="a06a41a56e5aa99c8e399a3c7693221a"
+
+dest_files=[ "res://.import/pad.png-480982c80ccabf4e1d7c145f4eaec700.stex" ]
+dest_md5="859dff265499f249a08671fad4662479"
 
 [params]
 
@@ -15,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

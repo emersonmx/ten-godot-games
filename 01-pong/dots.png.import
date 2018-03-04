@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white-repeat.png-5f2d6b057836f9834a4e6a78dc3886b7.stex"
+path="res://.import/dots.png-503527815ff6050c9a751263768a95eb.stex"
 
 [deps]
 
-source_md5="5d7200b9b73ab2dbd9587bb839ad7aef"
+source_file="res://dots.png"
+source_md5="51f7b364da43eceb0eb0a0b1a6bb3461"
+
+dest_files=[ "res://.import/dots.png-503527815ff6050c9a751263768a95eb.stex" ]
+dest_md5="b770b63efb43d0d7c6570bd3d4c738ed"
 
 [params]
 
@@ -14,8 +18,8 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=1
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
