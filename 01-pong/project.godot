@@ -11,12 +11,12 @@ config_version=3
 [application]
 
 config/name="Pong"
-run/main_scene="res://menu.tscn"
+run/main_scene="res://scenes/menu/menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-App="*res://app.gd"
+App="*res://scripts/app.gd"
 
 [display]
 

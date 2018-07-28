@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/ball/ball.gd" type="Script" id=1]
+[ext_resource path="res://objects/ball/ball.png" type="Texture" id=2]
+
+[node name="ball" type="Node2D"]
+
+editor/display_folded = true
+scale = Vector2( 4, 4 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+extents = Vector2( 0, 0 )
+
+[node name="sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+

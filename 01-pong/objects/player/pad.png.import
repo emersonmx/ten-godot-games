@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pad.png-480982c80ccabf4e1d7c145f4eaec700.stex"
+path="res://.import/pad.png-d7d2967f37e9776e52d63b85eea38a36.stex"
 
 [deps]
 
-source_file="res://pad.png"
-source_md5="a06a41a56e5aa99c8e399a3c7693221a"
-
-dest_files=[ "res://.import/pad.png-480982c80ccabf4e1d7c145f4eaec700.stex" ]
-dest_md5="859dff265499f249a08671fad4662479"
+source_file="res://objects/player/pad.png"
+dest_files=[ "res://.import/pad.png-d7d2967f37e9776e52d63b85eea38a36.stex" ]
 
 [params]
 

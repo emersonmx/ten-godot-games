@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ball.png-9a4ca347acb7532f6ae347744a6b04f7.stex"
+path="res://.import/dots.png-08a29f769b50236b9db1ba216e941dd5.stex"
 
 [deps]
 
-source_file="res://ball.png"
-source_md5="201c44f5aae97b1273cd2b509b38b8cd"
-
-dest_files=[ "res://.import/ball.png-9a4ca347acb7532f6ae347744a6b04f7.stex" ]
-dest_md5="26efbd2a6bac915103b0b5f9f6ef1d26"
+source_file="res://scenes/game/dots.png"
+dest_files=[ "res://.import/dots.png-08a29f769b50236b9db1ba216e941dd5.stex" ]
 
 [params]
 
@@ -18,7 +15,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

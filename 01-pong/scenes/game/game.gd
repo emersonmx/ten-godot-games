@@ -1,8 +1,8 @@
 extends Node2D
 
 var player_extents = Vector2(8, 24)
-var player_script = preload('res://player.gd')
-var player_ia_script = preload('res://player_ia.gd')
+var player_script = preload('res://objects/player/player.gd')
+var player_ia_script = preload('res://objects/player/player_ia.gd')
 
 func _enter_tree():
     setupBall()

@@ -1,4 +1,4 @@
-extends 'collision.gd'
+extends 'res://scripts/collision.gd'
 
 signal point
 

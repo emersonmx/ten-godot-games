@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dots.png-503527815ff6050c9a751263768a95eb.stex"
+path="res://.import/wall.png-05cd6aac6855878c14f38da50483f2b7.stex"
 
 [deps]
 
-source_file="res://dots.png"
-source_md5="51f7b364da43eceb0eb0a0b1a6bb3461"
-
-dest_files=[ "res://.import/dots.png-503527815ff6050c9a751263768a95eb.stex" ]
-dest_md5="b770b63efb43d0d7c6570bd3d4c738ed"
+source_file="res://objects/wall/wall.png"
+dest_files=[ "res://.import/wall.png-05cd6aac6855878c14f38da50483f2b7.stex" ]
 
 [params]
 
@@ -18,7 +15,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

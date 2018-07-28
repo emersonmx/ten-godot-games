@@ -25,7 +25,7 @@ func _input(event):
         _update_options()
     elif event.is_action_pressed('ui_accept'):
         App.game_mode = option
-        get_tree().change_scene('res://game.tscn')
+        get_tree().change_scene('res://scenes/game/game.tscn')
 
 func _update_options():
     option = clamp(option, 0, options.size() - 1)

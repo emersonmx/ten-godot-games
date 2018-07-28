@@ -1,4 +1,4 @@
-extends 'collision.gd'
+extends 'res://scripts/collision.gd'
 
 var WALL_HEIGHT = 8
 
