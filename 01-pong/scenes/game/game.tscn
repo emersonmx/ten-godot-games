@@ -7,7 +7,7 @@
 [ext_resource path="res://objects/ball/ball.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/game/ui.tscn" type="PackedScene" id=6]
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -15,7 +15,6 @@ script = ExtResource( 1 )
 
 editor/display_folded = true
 position = Vector2( 16, 240 )
-extents = Vector2( 0, 0 )
 
 [node name="anchor" parent="player1" index="1"]
 
@@ -25,7 +24,6 @@ position = Vector2( -4, 0 )
 
 editor/display_folded = true
 position = Vector2( 624, 240 )
-extents = Vector2( 0, 0 )
 
 [node name="anchor" parent="player2" index="1"]
 
@@ -52,7 +50,6 @@ position = Vector2( 320, 476 )
 [node name="ball" parent="." index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 320, 240 )
-extents = Vector2( 0, 0 )
 
 [node name="ui" parent="." index="6" instance=ExtResource( 6 )]
 
