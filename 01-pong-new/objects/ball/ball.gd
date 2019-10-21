@@ -11,8 +11,8 @@ var velocity = Vector2()
 var _initial_position = Vector2()
 var _initial_min_speed = min_speed
 
-onready var up_ray = $up_ray
-onready var down_ray = $down_ray
+onready var up_area = $up_area
+onready var down_area = $down_area
 
 func _ready():
     randomize()
@@ -59,10 +59,15 @@ func decreate_speed_by(value):
     speed = clamp(speed - value, min_speed, max_speed)
 
 func _is_squashed():
-    return up_ray.is_colliding() and down_ray.is_colliding()
+    return (!up_area.get_overlapping_bodies().empty()
+        and !down_area.get_overlapping_bodies().empty())
 
 func _get_squashers():
     if not _is_squashed():
         return []
 
-    return [up_ray.get_collider(), down_ray.get_collider()]
+    var bodies = up_area.get_overlapping_bodies()
+    if bodies:
+        return bodies
+
+    return down_area.get_overlapping_bodies()

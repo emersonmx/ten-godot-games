@@ -59,8 +59,8 @@ func update_bounce_direction():
     if Engine.editor_hint:
         update()
 
-func unsquash(ball, colliders):
-    if not self in colliders:
+func unsquash(ball, bodies):
+    if not self in bodies:
         return
 
     _unsquash_timer.start()
