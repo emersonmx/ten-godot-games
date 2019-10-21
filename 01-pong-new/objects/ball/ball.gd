@@ -66,8 +66,4 @@ func _get_squashers():
     if not _is_squashed():
         return []
 
-    var bodies = up_area.get_overlapping_bodies()
-    if bodies:
-        return bodies
-
-    return down_area.get_overlapping_bodies()
+    return up_area.get_overlapping_bodies() + down_area.get_overlapping_bodies()
