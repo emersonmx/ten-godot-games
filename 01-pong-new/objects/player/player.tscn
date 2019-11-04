@@ -8,6 +8,7 @@ extents = Vector2( 10, 40 )
 [node name="player" type="StaticBody2D" groups=[
 "Player",
 ]]
+position = Vector2( 0, 50 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -27,7 +28,3 @@ shape = SubResource( 1 )
 
 [node name="bounce_direction" type="Position2D" parent="."]
 position = Vector2( -20, 0 )
-
-[node name="unsquash_timer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true

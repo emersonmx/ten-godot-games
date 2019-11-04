@@ -2,8 +2,6 @@ extends Node2D
 
 func _ready():
     $area.connect("body_exited", self, 'reset')
-    $ball.connect('squashed', $player_1, 'unsquash')
-    $ball.connect('squashed', $player_2, 'unsquash')
 
 func _unhandled_key_input(event):
     if event.is_pressed() and event.scancode == KEY_R:
