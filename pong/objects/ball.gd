@@ -18,8 +18,18 @@ func is_in_fast_mode_set(value):
     fast_mode_speed = fast_mode_max_speed
     is_in_fast_mode = value
 
+func get_top_collider():
+    var colliders = $top_sensor.get_overlapping_bodies()
+    colliders.erase(self)
+    return colliders.front()
+
+func get_bottom_collider():
+    var colliders = $bottom_sensor.get_overlapping_bodies()
+    colliders.erase(self)
+    return colliders.front()
+
 func is_squashed():
-    return $top_sensor.get_overlapping_bodies() and $bottom_sensor.get_overlapping_bodies()
+    return get_top_collider() and get_bottom_collider()
 
 func reset():
     position = initial_position
@@ -53,9 +63,7 @@ func _physics_process(delta):
         direction = direction.bounce(collision.normal).normalized()
 
     if is_squashed():
-        var top_collider = $top_sensor.get_overlapping_bodies().front()
-        var bottom_collider = $bottom_sensor.get_overlapping_bodies().front()
-        emit_signal('squashed', top_collider, bottom_collider)
+        emit_signal('squashed', get_top_collider(), get_bottom_collider())
 
     speed += speed_step
     speed = int(clamp(speed, min_speed, max_speed))
