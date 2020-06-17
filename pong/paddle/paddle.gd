@@ -8,9 +8,8 @@ enum Player {
 export(Player) var player_index = Player.ONE setget player_index_set
 export(String) var up_action_name
 export(String) var down_action_name
-export(int) var move_constraint = 300
+export(int) var move_speed = 300
 
-const MOVE_SPEED = 200
 var up_pressed = 0
 var down_pressed = 0
 var direction = Vector2.ZERO
@@ -46,7 +45,7 @@ func _input(event):
     direction.y = down_pressed - up_pressed
 
 func _physics_process(delta):
-    var velocity = direction * MOVE_SPEED * delta
+    var velocity = direction * move_speed * delta
     var collision = move_and_collide(velocity)
     if not collision:
         return
@@ -56,4 +55,9 @@ func _physics_process(delta):
     if not collider.is_in_group('ball'):
         return
 
-    collider.direction = get_bounce_direction(collider.position)
+    hit_ball(collider)
+
+func hit_ball(ball):
+    ball.direction = get_bounce_direction(ball.position)
+    if up_pressed > 0 or down_pressed > 0:
+        ball.is_in_fast_mode = true
