@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://paddle/paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/paddle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game.gd" type="Script" id=4]
@@ -29,9 +29,14 @@ position = Vector2( 400, 595 )
 [node name="ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 400, 300 )
 
-[node name="play_timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="play_area" parent="." instance=ExtResource( 5 )]
 position = Vector2( 400, 300 )
+
+[node name="squashed_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="play_timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="squashed" from="ball" to="." method="_on_ball_squashed"]
 [connection signal="body_exited" from="play_area" to="." method="_on_ball_leaves_play_area"]

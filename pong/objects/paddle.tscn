@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://paddle/paddle.gd" type="Script" id=1]
-[ext_resource path="res://paddle/paddle.png" type="Texture" id=2]
+[ext_resource path="res://objects/paddle.gd" type="Script" id=1]
+[ext_resource path="res://objects/paddle.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 40 )
@@ -10,6 +10,10 @@ extents = Vector2( 10, 40 )
 "paddle",
 ]]
 script = ExtResource( 1 )
+player_index = 1
+up_action_name = ""
+down_action_name = ""
+move_speed = 300
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -13,6 +13,7 @@ export(int) var move_speed = 300
 var up_pressed = 0
 var down_pressed = 0
 var direction = Vector2.ZERO
+var stunned = false
 
 func player_index_set(value):
     player_index = value
@@ -33,6 +34,9 @@ func _ready():
     pass
 
 func _input(event):
+    if stunned:
+        return
+
     if event.is_action_pressed(up_action_name):
         up_pressed = 1
     if event.is_action_released(up_action_name):
