@@ -32,7 +32,7 @@ func _on_ball_squashed(top_collider, bottom_collider):
 	paddle.stunned = false
 
 
-func _on_ball_leaves_play_area(body):
+func _on_play_area_body_exited(body):
 	if not body.is_in_group('ball'):
 		return
 

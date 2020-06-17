@@ -39,4 +39,4 @@ one_shot = true
 [node name="play_timer" type="Timer" parent="."]
 one_shot = true
 [connection signal="squashed" from="ball" to="." method="_on_ball_squashed"]
-[connection signal="body_exited" from="play_area" to="." method="_on_ball_leaves_play_area"]
+[connection signal="body_exited" from="play_area" to="." method="_on_play_area_body_exited"]
