@@ -23,13 +23,13 @@ func is_in_fast_mode_set(value):
 func get_top_collider():
 	var colliders = $top_sensor.get_overlapping_bodies()
 	colliders.erase(self)
-	return colliders.front()
+	return not colliders.empty() and colliders.front()
 
 
 func get_bottom_collider():
 	var colliders = $bottom_sensor.get_overlapping_bodies()
 	colliders.erase(self)
-	return colliders.front()
+	return not colliders.empty() and colliders.front()
 
 
 func is_squashed():
@@ -62,9 +62,6 @@ func _physics_process(delta):
 		return
 
 	var collider = collision.collider
-	if not collider.has_method('is_in_group'):
-		return
-
 	if collider.is_in_group('paddle'):
 		collider.hit_ball(self)
 	else:

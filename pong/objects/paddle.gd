@@ -59,8 +59,6 @@ func _physics_process(delta):
 	if not collision:
 		return
 	var collider = collision.collider
-	if not collider.has_method('is_in_group'):
-		return
 	if not collider.is_in_group('ball'):
 		return
 
