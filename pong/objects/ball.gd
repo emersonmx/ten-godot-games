@@ -23,13 +23,13 @@ func is_in_fast_mode_set(value):
 func get_top_collider():
 	var colliders = $top_sensor.get_overlapping_bodies()
 	colliders.erase(self)
-	return not colliders.empty() and colliders.front()
+	return null if colliders.empty() else colliders.front()
 
 
 func get_bottom_collider():
 	var colliders = $bottom_sensor.get_overlapping_bodies()
 	colliders.erase(self)
-	return not colliders.empty() and colliders.front()
+	return null if colliders.empty() else colliders.front()
 
 
 func is_squashed():
@@ -47,6 +47,7 @@ func play():
 	randomize()
 	var dir = -1 if randi() % 2 == 0 else 1
 	direction = Vector2(dir, rand_range(-1, 1)).normalized()
+	direction = Vector2(-1, 0.75).normalized()
 
 
 func _ready():
