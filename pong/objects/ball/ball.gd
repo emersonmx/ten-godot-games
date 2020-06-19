@@ -47,7 +47,7 @@ func play():
 	randomize()
 	var dir = -1 if randi() % 2 == 0 else 1
 	direction = Vector2(dir, rand_range(-1, 1)).normalized()
-	direction = Vector2(-1, 0.75).normalized()
+	#direction = Vector2(-1, 0.75).normalized()
 
 
 func _ready():
