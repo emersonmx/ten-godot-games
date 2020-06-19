@@ -46,6 +46,7 @@ func _on_ball_squashed(top_collider, bottom_collider):
 	yield(squashed_timer, 'timeout')
 
 	paddle.stunned = false
+	paddle.direction = Vector2.ZERO
 
 
 func _on_play_area_body_exited(body):

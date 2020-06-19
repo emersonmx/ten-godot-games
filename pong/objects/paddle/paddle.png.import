@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall.png-6b32a0989829b745418533d8421e8300.stex"
+path="res://.import/paddle.png-72aef5773ad9d83f247ceae59ed81ece.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/wall.png"
-dest_files=[ "res://.import/wall.png-6b32a0989829b745418533d8421e8300.stex" ]
+source_file="res://objects/paddle/paddle.png"
+dest_files=[ "res://.import/paddle.png-72aef5773ad9d83f247ceae59ed81ece.stex" ]
 
 [params]
 

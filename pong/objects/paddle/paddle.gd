@@ -38,9 +38,6 @@ func _ready():
 
 
 func _input(event):
-	if stunned:
-		return
-
 	if event.is_action_pressed(up_action_name):
 		up_pressed = 1
 	if event.is_action_released(up_action_name):
@@ -49,6 +46,9 @@ func _input(event):
 		down_pressed = 1
 	if event.is_action_released(down_action_name):
 		down_pressed = 0
+
+	if stunned:
+		return
 
 	direction.y = down_pressed - up_pressed
 
