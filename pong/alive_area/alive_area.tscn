@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 400, 300 )
 
-[node name="play_area" type="Area2D"]
+[node name="alive_area" type="Area2D"]
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

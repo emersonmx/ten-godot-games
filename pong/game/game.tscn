@@ -1,29 +1,32 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://paddle/paddle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://wall/wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ball/ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/game.gd" type="Script" id=4]
 [ext_resource path="res://play_area/play_area.tscn" type="PackedScene" id=5]
+[ext_resource path="res://spawn/spawn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://alive_area/alive_area.tscn" type="PackedScene" id=7]
 
-
-
-
-
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1000, 300 )
 
 [node name="game" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="player_1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 20, 300 )
+player_index = 1
 up_action_name = "player1_up"
 down_action_name = "player1_down"
+move_speed = 300
 
 [node name="player_2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 780, 300 )
 player_index = 2
 up_action_name = "player2_up"
 down_action_name = "player2_down"
+move_speed = 300
 
 [node name="top_wall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 400, 5 )
@@ -31,11 +34,20 @@ position = Vector2( 400, 5 )
 [node name="bottom_wall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 400, 595 )
 
-[node name="ball" parent="." instance=ExtResource( 3 )]
+[node name="ball_spawn" parent="." instance=ExtResource( 6 )]
 position = Vector2( 400, 300 )
+object_scene = ExtResource( 3 )
 
 [node name="play_area" parent="." instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 400, 300 )
+
+[node name="alive_area" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 400, 300 )
+
+[node name="collision" parent="alive_area" index="0"]
+shape = SubResource( 1 )
 
 [node name="squashed_timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -45,5 +57,11 @@ autostart = true
 [node name="play_timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-[connection signal="squashed" from="ball" to="." method="_on_ball_squashed"]
+
+[node name="camera" type="Camera2D" parent="."]
+offset = Vector2( 400, 300 )
+current = true
 [connection signal="body_exited" from="play_area" to="." method="_on_play_area_body_exited"]
+[connection signal="body_exited" from="alive_area" to="." method="_on_alive_area_body_exited"]
+
+[editable path="alive_area"]

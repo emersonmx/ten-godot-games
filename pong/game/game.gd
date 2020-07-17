@@ -21,14 +21,19 @@ func _ready():
 	var play_timer = $play_timer
 	play_timer.start()
 	yield(play_timer, 'timeout')
-	$ball.reset()
-	$ball.play()
+	spawn_ball()
+
+
+func spawn_ball():
+	var ball = $ball_spawn.spawn()
+	ball.connect('squashed', self, '_on_ball_squashed')
+	ball.reset()
+	ball.play()
 
 
 func _input(event):
 	if Input.is_key_pressed(KEY_R) and event.is_pressed():
-		$ball.reset()
-		$ball.play()
+		spawn_ball()
 
 
 func _on_ball_squashed(top_collider, bottom_collider):
@@ -62,5 +67,11 @@ func _on_play_area_body_exited(body):
 	var play_timer = $play_timer
 	play_timer.start()
 	yield(play_timer, 'timeout')
-	$ball.reset()
-	$ball.play()
+	spawn_ball()
+
+
+func _on_alive_area_body_exited(body):
+	if not body.is_in_group('ball'):
+		return
+
+	body.queue_free()
