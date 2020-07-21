@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://paddle/paddle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://wall/wall.tscn" type="PackedScene" id=2]
@@ -8,12 +8,19 @@
 [ext_resource path="res://spawn/spawn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://alive_area/alive_area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/midfield.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 300 )
 
 [node name="game" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="midfield" type="Sprite" parent="."]
+position = Vector2( 400, 300 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1, 600 )
 
 [node name="player_1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 20, 300 )
@@ -61,6 +68,10 @@ offset = Vector2( 400, 300 )
 current = true
 
 [node name="interface" parent="." instance=ExtResource( 8 )]
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 801.0
+margin_bottom = 599.0
 [connection signal="body_exited" from="play_area" to="." method="_on_play_area_body_exited"]
 [connection signal="body_exited" from="alive_area" to="." method="_on_alive_area_body_exited"]
 
