@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://paddle/paddle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://wall/wall.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://play_area/play_area.tscn" type="PackedScene" id=5]
 [ext_resource path="res://spawn/spawn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://alive_area/alive_area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/interface.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 300 )
@@ -16,17 +17,14 @@ script = ExtResource( 4 )
 
 [node name="player_1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 20, 300 )
-player_index = 1
 up_action_name = "player1_up"
 down_action_name = "player1_down"
-move_speed = 300
 
 [node name="player_2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 780, 300 )
 player_index = 2
 up_action_name = "player2_up"
 down_action_name = "player2_down"
-move_speed = 300
 
 [node name="top_wall" parent="." instance=ExtResource( 2 )]
 position = Vector2( 400, 5 )
@@ -61,6 +59,8 @@ autostart = true
 [node name="camera" type="Camera2D" parent="."]
 offset = Vector2( 400, 300 )
 current = true
+
+[node name="interface" parent="." instance=ExtResource( 8 )]
 [connection signal="body_exited" from="play_area" to="." method="_on_play_area_body_exited"]
 [connection signal="body_exited" from="alive_area" to="." method="_on_alive_area_body_exited"]
 

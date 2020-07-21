@@ -3,9 +3,6 @@
 [ext_resource path="res://paddle/paddle.gd" type="Script" id=1]
 [ext_resource path="res://paddle/paddle.png" type="Texture" id=2]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 40 )
 
@@ -24,3 +21,6 @@ region_rect = Rect2( 0, 0, 1, 1 )
 
 [node name="hit_base" type="Position2D" parent="."]
 position = Vector2( -30, 0 )
+
+[node name="input_offset" type="Position2D" parent="."]
+position = Vector2( 100, 0 )

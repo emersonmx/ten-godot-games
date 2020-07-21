@@ -60,9 +60,11 @@ func _on_play_area_body_exited(body):
 
 	var exit_direction = (body.position - position).normalized().x
 	if exit_direction > 0:
-		right_player_score += 1
-	elif exit_direction < 0:
 		left_player_score += 1
+		$interface.update_player1_score(left_player_score)
+	elif exit_direction < 0:
+		right_player_score += 1
+		$interface.update_player2_score(right_player_score)
 
 	var play_timer = $play_timer
 	play_timer.start()

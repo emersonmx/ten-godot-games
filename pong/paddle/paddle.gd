@@ -21,16 +21,33 @@ func player_index_set(value):
 	var hit_base = $hit_base
 	if not hit_base:
 		return
+
+	var input_offset = $input_offset
+	if not input_offset:
+		return
+
 	var pos_x = abs(hit_base.position.x)
 	if value == Player.ONE:
 		pos_x = -pos_x
-	if value == Player.TWO:
-		pos_x = pos_x
 	hit_base.position.x = pos_x
+
+	pos_x = abs(input_offset.position.x)
+	if value == Player.ONE:
+		pos_x = -pos_x
+	input_offset.position.x = -pos_x
 
 
 func get_bounce_direction(hit_point: Vector2) -> Vector2:
 	return (hit_point - $hit_base.global_position).normalized()
+
+
+func is_in_input_offset(input_point: Vector2) -> bool:
+	# TODO: Corrigir essa bixiga
+	if player_index == Player.ONE:
+		return input_point.x <= $input_offset.position.x
+	if player_index == Player.TWO:
+		return input_point.x >= $input_offset.position.x
+	return false
 
 
 func _ready():
